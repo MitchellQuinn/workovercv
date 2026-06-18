@@ -1,0 +1,9 @@
+codex:
+  status: needs_retest_v0.6
+  notes: "Codex GitHub-profile smoke should be rerun against the v0.6 report-shape and output-quality contract before marking v0.6 tested."
+claude_code:
+  status: untested
+  notes: "Preliminary adapter files provided, but end-to-end Claude Code execution has not yet been verified."
+local_backend:
+  status: not_planned_v0.6
+  notes: "Direct API-backed or local model execution is out of scope for v0.6."

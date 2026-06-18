@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorkOverCV Signal Record",
+  "type": "object",
+  "required": [
+    "signal_id",
+    "category",
+    "label",
+    "evidence_ids",
+    "evidence_summary",
+    "implication",
+    "confidence",
+    "confidence_reason",
+    "caveats"
+  ],
+  "properties": {
+    "signal_id": { "type": "string", "minLength": 1 },
+    "category": {
+      "enum": [
+        "documentation_and_handoff",
+        "system_design",
+        "implementation_execution",
+        "validation_and_reliability",
+        "measurement_and_evaluation",
+        "maintainability",
+        "experimentation_and_learning",
+        "product_packaging",
+        "development_cadence",
+        "authorship_bounds"
+      ]
+    },
+    "label": { "type": "string", "minLength": 1 },
+    "evidence_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "evidence_summary": { "type": "string", "minLength": 1 },
+    "implication": { "type": "string", "minLength": 1 },
+    "confidence": { "enum": ["low", "medium", "high"] },
+    "confidence_reason": { "type": "string", "minLength": 1 },
+    "caveats": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": false
+}

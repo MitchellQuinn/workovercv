@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorkOverCV Review Scope",
+  "type": "object",
+  "required": ["candidate", "repositories"],
+  "properties": {
+    "candidate": {
+      "type": "object",
+      "required": ["type", "url", "username"],
+      "properties": {
+        "type": { "enum": ["github_profile", "local_path"] },
+        "url": { "type": "string", "minLength": 1 },
+        "username": { "type": "string", "minLength": 1 },
+        "display_name": { "type": ["string", "null"] },
+        "public_repos": { "type": ["integer", "null"] },
+        "path": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "generated_at": { "type": "string", "minLength": 1 },
+    "source_inventory": { "type": "string", "minLength": 1 },
+    "repositories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["repo_id", "name", "url", "selected_for_review"],
+        "properties": {
+          "repo_id": { "type": "string", "minLength": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "minLength": 1 },
+          "clone_url": { "type": "string" },
+          "local_path": { "type": "string" },
+          "default_branch": { "type": ["string", "null"] },
+          "selected_for_review": { "type": "boolean" },
+          "selection_reason": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

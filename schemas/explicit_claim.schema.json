@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorkOverCV Explicit Claim Record",
+  "type": "object",
+  "required": [
+    "claim_id",
+    "repo_id",
+    "artifact_id",
+    "claim_text",
+    "claim_type",
+    "scope",
+    "risk_of_overclaim",
+    "evidence_ids"
+  ],
+  "properties": {
+    "claim_id": { "type": "string", "minLength": 1 },
+    "repo_id": { "type": "string", "minLength": 1 },
+    "artifact_id": { "type": "string", "minLength": 1 },
+    "claim_text": { "type": "string", "minLength": 1 },
+    "claim_type": {
+      "enum": [
+        "capability",
+        "metric",
+        "limitation",
+        "architecture",
+        "process",
+        "reproducibility",
+        "employment_positioning"
+      ]
+    },
+    "scope": { "enum": ["narrow", "moderate", "broad"] },
+    "risk_of_overclaim": { "enum": ["low", "medium", "high"] },
+    "evidence_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "additionalProperties": false
+}

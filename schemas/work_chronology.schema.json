@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorkOverCV Work Chronology",
+  "type": "object",
+  "required": ["generated_at", "max_commits_per_repository", "repositories"],
+  "properties": {
+    "generated_at": { "type": "string", "minLength": 1 },
+    "max_commits_per_repository": { "type": "integer", "minimum": 1 },
+    "repositories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["repo_id", "available", "commit_count", "entries"],
+        "properties": {
+          "repo_id": { "type": "string", "minLength": 1 },
+          "available": { "type": "boolean" },
+          "reason_unavailable": { "type": "string" },
+          "default_branch": { "type": ["string", "null"] },
+          "commit_count": { "type": "integer", "minimum": 0 },
+          "first_commit_at": { "type": ["string", "null"] },
+          "last_commit_at": { "type": ["string", "null"] },
+          "entries": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["commit_hash", "committed_at", "subject"],
+              "properties": {
+                "commit_hash": { "type": "string", "minLength": 1 },
+                "committed_at": { "type": "string", "minLength": 1 },
+                "subject": { "type": "string" }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorkOverCV Evidence Gap Follow-Up Record",
+  "type": "object",
+  "required": ["mitigation_id", "related_gap_id", "related_signal_ids", "mitigation_type", "recommendation", "rationale"],
+  "properties": {
+    "mitigation_id": { "type": "string", "minLength": 1 },
+    "related_gap_id": { "type": "string", "minLength": 1 },
+    "related_signal_ids": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "mitigation_type": {
+      "enum": [
+        "onboarding",
+        "pairing",
+        "work_sample",
+        "interview_probe",
+        "scope_boundary",
+        "technical_follow_up",
+        "reviewer_bundle_request"
+      ]
+    },
+    "recommendation": { "type": "string", "minLength": 1 },
+    "rationale": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": false
+}
