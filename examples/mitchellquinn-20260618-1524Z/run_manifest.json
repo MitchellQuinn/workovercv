@@ -1,0 +1,98 @@
+{
+  "artifacts": [
+    "artifact_inventory.json",
+    "evidence_map.jsonl",
+    "explicit_claims.jsonl",
+    "gap_register.jsonl",
+    "materialization.json",
+    "mitigations.jsonl",
+    "red_team_review.json",
+    "repo_inventory.json",
+    "report.json",
+    "report.md",
+    "review_corpus.jsonl",
+    "review_scope.yml",
+    "role_family_fit.json",
+    "run_manifest.json",
+    "screening_brief.md",
+    "signal_ledger.jsonl",
+    "summary-report.md",
+    "work_chronology.json"
+  ],
+  "command_history": [
+    {
+      "command": "discover",
+      "completed_at": "2026-06-18T15:24:02Z",
+      "config": {
+        "candidate": "https://github.com/MitchellQuinn",
+        "out": "work\\workovercv-runs"
+      }
+    },
+    {
+      "command": "collect",
+      "completed_at": "2026-06-18T15:25:36Z",
+      "config": {
+        "keep_worktrees": false,
+        "scope": "C:\\Users\\Mitch\\Documents\\Codex\\2026-06-18\\is-workovercv-available-as-a-skill\\work\\workovercv-runs\\mitchellquinn-20260618-1524Z\\review_scope.yml",
+        "work_root": "C:\\Users\\Mitch\\Documents\\Codex\\2026-06-18\\is-workovercv-available-as-a-skill\\work\\workovercv-worktrees"
+      }
+    },
+    {
+      "command": "analyze",
+      "completed_at": "2026-06-18T15:25:55Z",
+      "config": {
+        "analysis_mode": "deterministic_rubric",
+        "evidence_boundary": [
+          "review_scope.yml",
+          "repo_inventory.json",
+          "artifact_inventory.json",
+          "review_corpus.jsonl",
+          "work_chronology.json"
+        ],
+        "generated_artifacts": [
+          "explicit_claims.jsonl",
+          "signal_ledger.jsonl",
+          "evidence_map.jsonl",
+          "gap_register.jsonl",
+          "role_family_fit.json",
+          "mitigations.jsonl",
+          "red_team_review.json",
+          "report.json"
+        ],
+        "run": "C:\\Users\\Mitch\\Documents\\Codex\\2026-06-18\\is-workovercv-available-as-a-skill\\work\\workovercv-runs\\mitchellquinn-20260618-1524Z"
+      }
+    },
+    {
+      "command": "render",
+      "completed_at": "2026-06-18T15:26:00Z",
+      "config": {
+        "report_mode": "audit",
+        "run": "C:\\Users\\Mitch\\Documents\\Codex\\2026-06-18\\is-workovercv-available-as-a-skill\\work\\workovercv-runs\\mitchellquinn-20260618-1524Z",
+        "summary_report": "summary-report.md"
+      }
+    },
+    {
+      "command": "validate",
+      "completed_at": "2026-06-18T15:26:06Z",
+      "config": {
+        "run": "C:\\Users\\Mitch\\Documents\\Codex\\2026-06-18\\is-workovercv-available-as-a-skill\\work\\workovercv-runs\\mitchellquinn-20260618-1524Z"
+      }
+    },
+    {
+      "command": "validate",
+      "completed_at": "2026-06-18T15:27:00Z",
+      "config": {
+        "run": "C:\\Users\\Mitch\\Documents\\Codex\\2026-06-18\\is-workovercv-available-as-a-skill\\outputs\\workovercv-mitchellquinn-20260618-1524Z"
+      }
+    }
+  ],
+  "created_at": "2026-06-18T15:24:02Z",
+  "output_dir": "C:\\Users\\Mitch\\Documents\\Codex\\2026-06-18\\is-workovercv-available-as-a-skill\\outputs\\workovercv-mitchellquinn-20260618-1524Z",
+  "status": "complete",
+  "tool_name": "workovercv",
+  "tool_version": "0.6.0",
+  "updated_at": "2026-06-18T15:27:00Z",
+  "warnings": [],
+  "workflow_id": "workovercv.repository-employment-signal",
+  "workflow_version": "0.6.0"
+}
