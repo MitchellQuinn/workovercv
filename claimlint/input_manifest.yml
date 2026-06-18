@@ -1,0 +1,105 @@
+version: 0.1
+
+include:
+  - path: README.md
+    role: primary_readme
+    source_role: claim_source
+    extract_claims: true
+    use_as_evidence: true
+
+  - glob: docs/**/*.md
+    role: documentation
+    source_role: claim_source
+    use_as_evidence: true
+
+  - glob: skills/**/*.md
+    role: skill_documentation
+    source_role: claim_source
+    extract_claims: true
+    use_as_evidence: true
+
+  - path: adapters/codex/README.md
+    role: adapter_documentation
+    source_role: claim_source
+    extract_claims: true
+    use_as_evidence: true
+
+  - path: adapters/claude-code/README.md
+    role: adapter_documentation
+    source_role: claim_source
+    extract_claims: true
+    use_as_evidence: true
+
+  - glob: adapters/**/*.md
+    role: adapter_documentation
+    use_as_evidence: true
+
+  - path: pyproject.toml
+    role: package_metadata
+    source_role: reference_only
+    extract_claims: false
+    use_as_evidence: true
+
+  - glob: src/**/*.py
+    role: source_code
+    source_role: source_code
+    extract_claims: false
+    use_as_evidence: true
+
+  - glob: tests/**/*.py
+    role: tests
+    source_role: test_fixture
+    extract_claims: false
+    use_as_evidence: true
+
+  - glob: schemas/**/*.json
+    role: schemas
+    source_role: schema_reference
+    extract_claims: false
+    use_as_evidence: true
+
+  - glob: workflows/**/*.yml
+    role: workflows
+    source_role: workflow_contract
+    extract_claims: false
+    use_as_evidence: true
+
+  - glob: adapters/**/*.yml
+    role: adapter_status
+    source_role: adapter_contract
+    extract_claims: false
+    use_as_evidence: true
+
+  - glob: examples/**/*.md
+    role: example_outputs
+    source_role: example_output
+    extract_claims: false
+    use_as_evidence: true
+
+  - glob: examples/**/*.json
+    role: example_outputs
+    source_role: example_output
+    extract_claims: false
+    use_as_evidence: true
+
+  - glob: examples/**/*.yml
+    role: example_outputs
+    source_role: example_output
+    extract_claims: false
+    use_as_evidence: true
+
+exclude:
+  - glob: .git/**
+  - glob: .venv/**
+  - glob: node_modules/**
+  - glob: output/**
+  - glob: claimlint/**
+  - glob: .pytest_cache/**
+  - glob: .pytest-tmp/**
+  - glob: "**/__pycache__/**"
+  - glob: dist/**
+  - glob: build/**
+
+limits:
+  max_file_bytes: 500000
+  max_total_files: 300

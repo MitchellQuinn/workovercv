@@ -1,0 +1,656 @@
+{
+  "adapter_status": {
+    "claude_code": {
+      "notes": "Adapter files provided, but end-to-end Claude Code execution has not yet been verified.",
+      "status": "untested"
+    },
+    "codex": {
+      "notes": "Adapter files provided, but end-to-end Codex execution has not yet been verified.",
+      "status": "untested"
+    },
+    "local_backend": {
+      "notes": "Local model backend is planned for a later stage.",
+      "status": "planned"
+    }
+  },
+  "claim_count": 59,
+  "command_args": {
+    "command": "audit",
+    "manifest": "claimlint/input_manifest.yml",
+    "out": "claimlint",
+    "repo": "."
+  },
+  "completed_at": "2026-06-18T14:47:06+00:00",
+  "input_files": [
+    {
+      "extract_claims": true,
+      "path": "README.md",
+      "role": "primary_readme",
+      "sha256": "15403e0ff4b26f7986ad6a34247f2054231bf04955871da8fc3459067e90a932",
+      "size_bytes": 5502,
+      "source_role": "claim_source",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": true,
+      "path": "adapters/claude-code/README.md",
+      "role": "adapter_documentation",
+      "sha256": "25271dc502ce4971400b088bf245784d76e8dbd1b2a84de3596102e14b848000",
+      "size_bytes": 931,
+      "source_role": "claim_source",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": true,
+      "path": "adapters/codex/README.md",
+      "role": "adapter_documentation",
+      "sha256": "a75bd39c49e5dcbb5d1ed9584a7f6aa4c9e471606431c1ce0a7abf7b2a99bd43",
+      "size_bytes": 4110,
+      "source_role": "claim_source",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "adapters/codex/SMOKE.md",
+      "role": "adapter_documentation",
+      "sha256": "03d20e6f9d010b1ca64a6c7c0852e238fb6db6b2a9fbe40d83bb2aa214cd95df",
+      "size_bytes": 2575,
+      "source_role": "adapter_contract",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "adapters/codex/VERIFY.md",
+      "role": "adapter_documentation",
+      "sha256": "9fa466117d36d8026039d188af5f30e3606fc0dcc66271e0070dc7729c63ce22",
+      "size_bytes": 2069,
+      "source_role": "adapter_contract",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "adapters/codex/plugin/workovercv/skills/workovercv/SKILL.md",
+      "role": "adapter_documentation",
+      "sha256": "cae68d01bfb13b340f66a83aff45dcd36d3f0b7889bb926e53031807328d379b",
+      "size_bytes": 8592,
+      "source_role": "adapter_contract",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "adapters/status.yml",
+      "role": "adapter_status",
+      "sha256": "c8367f71c6eebb55792a6a4d596592db7a1e6baaa97ffe95be207d54ae28f50e",
+      "size_bytes": 440,
+      "source_role": "adapter_contract",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "docs/adapter_contract.md",
+      "role": "documentation",
+      "sha256": "32df8528ece95e5a4d4db2a52cd01280120dc5729b8432c017c9d8ee248fdc32",
+      "size_bytes": 663,
+      "source_role": "adapter_contract",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": true,
+      "path": "docs/implementation_map.md",
+      "role": "documentation",
+      "sha256": "3f936e6e07ee306cb583c313a90432d3a5354689c3e09d64e4fa930f1a5892b4",
+      "size_bytes": 3171,
+      "source_role": "claim_source",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "docs/manifest_contract.md",
+      "role": "documentation",
+      "sha256": "ac7fa4f350b928c6306dd4958fb4a77d0d75dcc699308e420996dcda53533293",
+      "size_bytes": 1490,
+      "source_role": "runtime_contract",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "docs/runtime_contract.md",
+      "role": "documentation",
+      "sha256": "577c1db9a372a4e2997630dd272fdd15852a0fecb0b5feebe4fe2aa82bb7d197",
+      "size_bytes": 5090,
+      "source_role": "runtime_contract",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": true,
+      "path": "docs/safety_and_taxonomy.md",
+      "role": "documentation",
+      "sha256": "d1d479a009874d8dcf7e905ccc6ab84ff4a22f3805cfc0a6c7ef072bb09f4d66",
+      "size_bytes": 2773,
+      "source_role": "claim_source",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": true,
+      "path": "docs/validation_contract.md",
+      "role": "documentation",
+      "sha256": "3ba2c07943ca0b6028c2742fe0ae6ccdcdfdb9ec0f9fb7dab4ed89efb1d62a25",
+      "size_bytes": 6304,
+      "source_role": "claim_source",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "examples/mitchellquinn-20260618-1431Z/artifact_inventory.json",
+      "role": "example_outputs",
+      "sha256": "3520ec0f47c98d9f9bd22a000650e2339e7037bcd7201ebadb9fe0ca74c6b76e",
+      "size_bytes": 338972,
+      "source_role": "example_output",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "examples/mitchellquinn-20260618-1431Z/materialization.json",
+      "role": "example_outputs",
+      "sha256": "b0ee787fa66ed8a8cb6cb4fc1a90aa33edd7e94caedfdfcc1ad390c8b1e490e8",
+      "size_bytes": 901,
+      "source_role": "example_output",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "examples/mitchellquinn-20260618-1431Z/red_team_review.json",
+      "role": "example_outputs",
+      "sha256": "d1260a2fcb8596e56a98feb46b861fb6bc0f611a95fdfffdccf39d3ce9248dfd",
+      "size_bytes": 39,
+      "source_role": "example_output",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "examples/mitchellquinn-20260618-1431Z/repo_inventory.json",
+      "role": "example_outputs",
+      "sha256": "cac46553b31dfeca957216cca6c9b0fdff0942ac80a36971c5d4c31fd679d4bc",
+      "size_bytes": 5909,
+      "source_role": "example_output",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "examples/mitchellquinn-20260618-1431Z/report.json",
+      "role": "example_outputs",
+      "sha256": "d550b207448a79f04b7ba685fb1a3631aca281364c33135ef5f9ae22578ad77d",
+      "size_bytes": 36495,
+      "source_role": "example_output",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "examples/mitchellquinn-20260618-1431Z/report.md",
+      "role": "example_outputs",
+      "sha256": "d6dfee39745522719d592a7569cf264e6d8a4296d34fc34e609cf36ca9e2e6be",
+      "size_bytes": 54555,
+      "source_role": "example_output",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "examples/mitchellquinn-20260618-1431Z/review_scope.yml",
+      "role": "example_outputs",
+      "sha256": "ccbedf02ece4d0455d088903306b06ecd401a6a41fed4378f52e4d0bd26851fc",
+      "size_bytes": 2401,
+      "source_role": "example_output",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "examples/mitchellquinn-20260618-1431Z/role_family_fit.json",
+      "role": "example_outputs",
+      "sha256": "bd7e0d3972575d8b40333ac0eff5710684e77b14734e04228fd6c5c849294cf2",
+      "size_bytes": 11145,
+      "source_role": "example_output",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "examples/mitchellquinn-20260618-1431Z/run_manifest.json",
+      "role": "example_outputs",
+      "sha256": "2886422da774cab9e0a9d0894e49ecc0f13823d0d50200d9db385ffce294413f",
+      "size_bytes": 2789,
+      "source_role": "example_output",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "examples/mitchellquinn-20260618-1431Z/screening_brief.md",
+      "role": "example_outputs",
+      "sha256": "341b7c8f271c0ac151b7bd92273845cc6a4dc7ae61734cbc52eedf82f002bf9c",
+      "size_bytes": 8592,
+      "source_role": "example_output",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "examples/mitchellquinn-20260618-1431Z/summary-report.md",
+      "role": "example_outputs",
+      "sha256": "486903776484b82fed0e4459b4d3379bd7554a25740f94d5d270766744b32816",
+      "size_bytes": 12521,
+      "source_role": "example_output",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "examples/mitchellquinn-20260618-1431Z/work_chronology.json",
+      "role": "example_outputs",
+      "sha256": "47b8428e2eff562418f2b4cd5880076305e41504d6030cd1a554f52ef80c761d",
+      "size_bytes": 1615,
+      "source_role": "example_output",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "pyproject.toml",
+      "role": "package_metadata",
+      "sha256": "980414a3c97e70333826eb625a8b1c496d8ec0b0612a372bfb6b563ca8309881",
+      "size_bytes": 671,
+      "source_role": "reference_only",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "schemas/artifact_inventory.schema.json",
+      "role": "schemas",
+      "sha256": "88b6ef5390b31da8f05879170c681416524c7939b7573c81561547c6230cde0f",
+      "size_bytes": 1714,
+      "source_role": "schema_reference",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "schemas/evidence.schema.json",
+      "role": "schemas",
+      "sha256": "ca58cdef070b6b44dda6b40a2cdce45731dd5bf4c17d3ecca67cf43273991c98",
+      "size_bytes": 1243,
+      "source_role": "schema_reference",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "schemas/explicit_claim.schema.json",
+      "role": "schemas",
+      "sha256": "41783113c20ae58473d6ace7c9151ea9b90043d40a7c15a990ce9faf124c58ac",
+      "size_bytes": 1033,
+      "source_role": "schema_reference",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "schemas/gap.schema.json",
+      "role": "schemas",
+      "sha256": "ab894bf6d48f8feac8b58af3f2d702e2a540761dfe1b9ba8baa9b49d49559a09",
+      "size_bytes": 865,
+      "source_role": "schema_reference",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "schemas/mitigation.schema.json",
+      "role": "schemas",
+      "sha256": "ed02f6e288048efbf07f42416de820458ce64a1001baabdb347485d13bb5fdf6",
+      "size_bytes": 899,
+      "source_role": "schema_reference",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "schemas/red_team_review.schema.json",
+      "role": "schemas",
+      "sha256": "30baeecd2627f890d57d58ef89c8e865e827c3dc9fa19634300c2f4964a0b1ca",
+      "size_bytes": 749,
+      "source_role": "schema_reference",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "schemas/repo_inventory.schema.json",
+      "role": "schemas",
+      "sha256": "fa72846d2dfd2c857915b89a6c0b9c8056359c69ecd48a3fd84d2512860c84bb",
+      "size_bytes": 2621,
+      "source_role": "schema_reference",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "schemas/report.schema.json",
+      "role": "schemas",
+      "sha256": "7f73b027a92ec65fcd896f7a36ba95296e73c0d6143a92aeb3fe415ea50a11f2",
+      "size_bytes": 9159,
+      "source_role": "schema_reference",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "schemas/review_corpus.schema.json",
+      "role": "schemas",
+      "sha256": "4fdc51e938a8b55c60972634bcc040290c4f63a9ff275632a6680b30b53bd298",
+      "size_bytes": 1545,
+      "source_role": "schema_reference",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "schemas/review_scope.schema.json",
+      "role": "schemas",
+      "sha256": "e4853fec987f038ae8f35e400c03ce1abf6240d060bf32854b96e374138053e8",
+      "size_bytes": 1504,
+      "source_role": "schema_reference",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "schemas/role_family_fit.schema.json",
+      "role": "schemas",
+      "sha256": "7d373fbe68cb6e53572dedc090d2d3f1ea14650dad3acd43ae6e6c6893cec89e",
+      "size_bytes": 1535,
+      "source_role": "schema_reference",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "schemas/run_manifest.schema.json",
+      "role": "schemas",
+      "sha256": "51c88a1e45b4861261a24a8d1e9315ded290aa3c354d3016359004b2036f564b",
+      "size_bytes": 1526,
+      "source_role": "schema_reference",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "schemas/signal.schema.json",
+      "role": "schemas",
+      "sha256": "0426960e7b1c2a459302bf6ddea4d87a5cb4978a5b995e2a8bfb34912611de80",
+      "size_bytes": 1266,
+      "source_role": "schema_reference",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "schemas/work_chronology.schema.json",
+      "role": "schemas",
+      "sha256": "34b579a52683058c2ab95919f565cbae76ad05481aec6d29067b90f4365346db",
+      "size_bytes": 1520,
+      "source_role": "schema_reference",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": true,
+      "path": "skills/workovercv/SKILL.md",
+      "role": "skill_documentation",
+      "sha256": "cae68d01bfb13b340f66a83aff45dcd36d3f0b7889bb926e53031807328d379b",
+      "size_bytes": 8592,
+      "source_role": "claim_source",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "src/workovercv/__init__.py",
+      "role": "source_code",
+      "sha256": "e904cb1c55a258405fd84b172a210daebf37bb3cdf9f7b55449d4526c04f1c45",
+      "size_bytes": 57,
+      "source_role": "source_code",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "src/workovercv/__main__.py",
+      "role": "source_code",
+      "sha256": "3d2438ae92f4746e9ffaa1f837b1fe803f6281091d1f31f8c95643716f257d9a",
+      "size_bytes": 80,
+      "source_role": "source_code",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "src/workovercv/analysis.py",
+      "role": "source_code",
+      "sha256": "14fa4a78216147b8e95e12020347b9fbbfd9876088ed9b536bdf9a22764d9f39",
+      "size_bytes": 969,
+      "source_role": "source_code",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "src/workovercv/cli.py",
+      "role": "source_code",
+      "sha256": "762b0b519169a1991333877a83d3f302ac1104231aa45bf00773492387587688",
+      "size_bytes": 4175,
+      "source_role": "source_code",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "src/workovercv/collect.py",
+      "role": "source_code",
+      "sha256": "602b69954a28535422ca0a01a00a90a8e2fbb6d9a277f749b30127fda9776bb5",
+      "size_bytes": 18015,
+      "source_role": "source_code",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "src/workovercv/constants.py",
+      "role": "source_code",
+      "sha256": "67ae11c8fb0a35c7113603be20b92e699144a47ee1d014bbf1738f85fcde3d1c",
+      "size_bytes": 3160,
+      "source_role": "source_code",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "src/workovercv/github.py",
+      "role": "source_code",
+      "sha256": "9306e5375319e4788cb1f3747506fac223239084a497cb891bb8105fac444d6e",
+      "size_bytes": 10146,
+      "source_role": "source_code",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "src/workovercv/io.py",
+      "role": "source_code",
+      "sha256": "ff3faf0af219a49d54cefe359c674e44b5417014390ed567229b7c88ecea47b2",
+      "size_bytes": 2069,
+      "source_role": "source_code",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "src/workovercv/manifest.py",
+      "role": "source_code",
+      "sha256": "c9c4c92716d456a49bea1b7a5b4bc91c973dd700d46d6f6e60533a96cd5a0168",
+      "size_bytes": 2578,
+      "source_role": "source_code",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "src/workovercv/render.py",
+      "role": "source_code",
+      "sha256": "661f284466aefc0ae48ff3f544b520be2fbe7e50cd6d2954a73eb0d29b0c0a02",
+      "size_bytes": 50223,
+      "source_role": "source_code",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "src/workovercv/rubric.py",
+      "role": "source_code",
+      "sha256": "50727c1d587a0c9a35d92ee37484a7909934faacca56a9b4db767bb59aaea2d7",
+      "size_bytes": 85852,
+      "source_role": "source_code",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "src/workovercv/run_manifest.py",
+      "role": "source_code",
+      "sha256": "e4af801830bc4ed8b97e2efb42ed27c6fc862dd79611e0e0657012f8ee7a3995",
+      "size_bytes": 1635,
+      "source_role": "source_code",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "src/workovercv/scan.py",
+      "role": "source_code",
+      "sha256": "810644f2ebfb09e8e13cab6c9afddc2c11a35cee149cdbd7c00669e5a2e7c942",
+      "size_bytes": 2802,
+      "source_role": "source_code",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "src/workovercv/validation.py",
+      "role": "source_code",
+      "sha256": "e85f1db0f436c5304ccb4e0f1a707c08b72b6369bce08780ebc6a3d11a3a1a31",
+      "size_bytes": 38935,
+      "source_role": "source_code",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "tests/fixtures/small_repo/src/app.py",
+      "role": "tests",
+      "sha256": "0049214146c09e015865e54237ecc4d15c9e043886cb20d1d9c68659bf744bc9",
+      "size_bytes": 63,
+      "source_role": "test_fixture",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "tests/fixtures/small_repo/tests/app_check.py",
+      "role": "tests",
+      "sha256": "ffd66d2c9db8b5fd0e808aa58cb5f5f7326e0595f671edf7c13d40fc6c23c02d",
+      "size_bytes": 77,
+      "source_role": "test_fixture",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "tests/test_analyze.py",
+      "role": "tests",
+      "sha256": "8c2fdfd67779f272d5a2baae7a28114f50e4b5eca9f1e17ef3e2d9ff59deba07",
+      "size_bytes": 3349,
+      "source_role": "test_fixture",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "tests/test_collect.py",
+      "role": "tests",
+      "sha256": "2cb6e9fc7c05718080b9b8e09596e79716714e876fa1ef6d4465b0b884f1f0c3",
+      "size_bytes": 11636,
+      "source_role": "test_fixture",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "tests/test_github.py",
+      "role": "tests",
+      "sha256": "70acc51b758a955e8a46f8bc41383a7474dfc19eb84e3f374b621686eef5bd8e",
+      "size_bytes": 3621,
+      "source_role": "test_fixture",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "tests/test_manifest.py",
+      "role": "tests",
+      "sha256": "6b9f366e13c89cace64b08459f3428e77b4d08e67369e823d35c6371c7e86129",
+      "size_bytes": 1965,
+      "source_role": "test_fixture",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "tests/test_render_validate.py",
+      "role": "tests",
+      "sha256": "9cff888ccccfabfa7b8afe9cc01cb25bee04e78a215984f521fbe4c14cd22825",
+      "size_bytes": 33521,
+      "source_role": "test_fixture",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "tests/test_rubric.py",
+      "role": "tests",
+      "sha256": "2ad6372026599ddd28d31b6732de69f1862c292ab8c632f6107c6f6af00b0845",
+      "size_bytes": 16866,
+      "source_role": "test_fixture",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "tests/test_run_manifest.py",
+      "role": "tests",
+      "sha256": "279dc80929b38f762a44bb978d6f37e540c3d0cbe3a09de8c0bcc5933cbccddb",
+      "size_bytes": 966,
+      "source_role": "test_fixture",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "tests/test_scan.py",
+      "role": "tests",
+      "sha256": "37cab135e41b30c6052d689489b740009fe179be96a92efc837be77dce1303b0",
+      "size_bytes": 1136,
+      "source_role": "test_fixture",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "tests/test_skill_packaging.py",
+      "role": "tests",
+      "sha256": "b3e75564a0f4ab85829801f7355678a44ef020d71b23d474c75865d91bb101c8",
+      "size_bytes": 584,
+      "source_role": "test_fixture",
+      "use_as_evidence": true
+    },
+    {
+      "extract_claims": false,
+      "path": "workflows/workovercv.yml",
+      "role": "workflows",
+      "sha256": "5cebdeb953b2362ed6ac761fd1d9de7ec25e61f41ddeefec64af00dc33a4fd77",
+      "size_bytes": 4312,
+      "source_role": "workflow_contract",
+      "use_as_evidence": true
+    }
+  ],
+  "manifest_path": "claimlint/input_manifest.yml",
+  "manifest_warnings": [],
+  "output_dir": "claimlint/workovercv-20260618-1447Z",
+  "outputs": {
+    "claims_jsonl": "claimlint/workovercv-20260618-1447Z/claims.jsonl",
+    "claims_report": "claimlint/workovercv-20260618-1447Z/claims_report.md",
+    "evidence_packet": "claimlint/workovercv-20260618-1447Z/evidence_packet.md",
+    "remediation_tasks": "claimlint/workovercv-20260618-1447Z/remediation_tasks.md",
+    "run_manifest": "claimlint/workovercv-20260618-1447Z/run_manifest.json"
+  },
+  "repo_path": ".",
+  "repository_claim_surface_status": "high_claim_surface",
+  "schemas": {
+    "audit_summary": "schemas/audit_summary.schema.json",
+    "claim_record": "schemas/claim_record.schema.json",
+    "run_manifest": "schemas/run_manifest.schema.json"
+  },
+  "started_at": "2026-06-18T14:47:04+00:00",
+  "tool_name": "claimlint",
+  "tool_version": "0.1.0",
+  "verdict_counts": {
+    "ambiguous": 29,
+    "supported": 29,
+    "unsupported": 1
+  },
+  "workflow_id": "claimlint.claim-audit",
+  "workflow_version": "0.1.0"
+}

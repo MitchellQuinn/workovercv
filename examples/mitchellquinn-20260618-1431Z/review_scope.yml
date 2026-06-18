@@ -1,0 +1,51 @@
+candidate:
+  type: github_profile
+  url: https://github.com/MitchellQuinn
+  username: MitchellQuinn
+  display_name: MitchellQuinn
+  public_repos: 5
+generated_at: '2026-06-18T14:31:22Z'
+source_inventory: repo_inventory.json
+repositories:
+- repo_id: mitchellquinn-claimlint
+  name: claimlint
+  url: https://github.com/MitchellQuinn/claimlint
+  clone_url: https://github.com/MitchellQuinn/claimlint.git
+  default_branch: main
+  selected_for_review: true
+  selection_reason: selected for the starter review scope; substantive default review
+    candidate; non-fork; has description; has primary language metadata; has repository
+    size metadata; has public update metadata
+- repo_id: mitchellquinn-bounded-monocular-perception
+  name: bounded-monocular-perception
+  url: https://github.com/MitchellQuinn/bounded-monocular-perception
+  clone_url: https://github.com/MitchellQuinn/bounded-monocular-perception.git
+  default_branch: main
+  selected_for_review: true
+  selection_reason: selected for the starter review scope; substantive default review
+    candidate; non-fork; has description; has primary language metadata; has repository
+    size metadata; has public update metadata
+- repo_id: mitchellquinn-industrial-sound-anomaly-detection
+  name: industrial-sound-anomaly-detection
+  url: https://github.com/MitchellQuinn/industrial-sound-anomaly-detection
+  clone_url: https://github.com/MitchellQuinn/industrial-sound-anomaly-detection.git
+  default_branch: main
+  selected_for_review: true
+  selection_reason: selected for the starter review scope; substantive default review
+    candidate; non-fork; has description; has primary language metadata; has repository
+    size metadata; has public update metadata
+- repo_id: mitchellquinn-workovercv
+  name: workovercv
+  url: https://github.com/MitchellQuinn/workovercv
+  clone_url: https://github.com/MitchellQuinn/workovercv.git
+  default_branch: main
+  selected_for_review: false
+  selection_reason: not selected by default because it appears empty from GitHub size
+    metadata
+- repo_id: mitchellquinn-mitchellquinn
+  name: mitchellquinn
+  url: https://github.com/MitchellQuinn/mitchellquinn
+  clone_url: https://github.com/MitchellQuinn/mitchellquinn.git
+  default_branch: main
+  selected_for_review: false
+  selection_reason: not selected by default because it is a profile README repository
