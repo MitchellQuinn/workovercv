@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorkOverCV Run Manifest",
+  "type": "object",
+  "required": [
+    "tool_name",
+    "tool_version",
+    "workflow_id",
+    "workflow_version",
+    "created_at",
+    "updated_at",
+    "status",
+    "command_history",
+    "output_dir",
+    "artifacts",
+    "warnings"
+  ],
+  "properties": {
+    "tool_name": { "const": "workovercv" },
+    "tool_version": { "type": "string", "minLength": 1 },
+    "workflow_id": { "const": "workovercv.repository-employment-signal" },
+    "workflow_version": { "type": "string", "minLength": 1 },
+    "created_at": { "type": "string", "minLength": 1 },
+    "updated_at": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["partial", "complete"] },
+    "output_dir": { "type": "string", "minLength": 1 },
+    "artifacts": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "command_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["command", "completed_at", "config"],
+        "properties": {
+          "command": { "type": "string", "minLength": 1 },
+          "completed_at": { "type": "string", "minLength": 1 },
+          "config": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -7,26 +7,14 @@ The canonical workflow remains `workflows/workovercv.yml`. The shared runtime
 contract remains `docs/runtime_contract.md`. The review scope boundary remains
 `docs/manifest_contract.md`.
 
-## Personal Skill Install
+## Personal Plugin Install
 
-For a user-wide Codex skill, copy `skills/workovercv` to your personal Codex
-skills directory:
+Install WorkOverCV as a personal Codex plugin. The plugin package lives at
+`adapters/codex/plugin/workovercv` and bundles the WorkOverCV skill plus the
+workflow, runtime contract, manifest contract, safety guidance, and schemas
+that the skill reads at runtime.
 
-```cmd
-mkdir "%USERPROFILE%\.agents\skills\workovercv"
-xcopy /E /I /Y "C:\Development\agentic-skills\workovercv\skills\workovercv" "%USERPROFILE%\.agents\skills\workovercv"
-```
-
-Or copy the folder manually in Explorer:
-
-- from: `C:\Development\agentic-skills\workovercv\skills\workovercv`
-- to: `C:\Users\Mitch\.agents\skills\workovercv`
-
-Restart Codex or start a new Codex thread after copying the skill.
-
-## Repo Skill Install
-
-From the repository root, install the repo-scoped Codex skill:
+From the repository root:
 
 ```bash
 ./adapters/codex/install.sh
@@ -38,23 +26,48 @@ On Windows PowerShell:
 .\adapters\codex\install.ps1
 ```
 
-If PowerShell blocks unsigned scripts, either run the script with a one-time
-process bypass:
+If PowerShell blocks unsigned scripts, run the script with a one-time process
+bypass:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\adapters\codex\install.ps1
 ```
 
-Or install the skill manually:
+The install scripts copy the local plugin source to:
 
-```powershell
-New-Item -ItemType Directory -Force -Path .\.agents\skills\workovercv
-Copy-Item -Path .\skills\workovercv\* -Destination .\.agents\skills\workovercv -Recurse -Force
+```text
+~/plugins/workovercv
 ```
 
-The install scripts copy `skills/workovercv` to
-`.agents/skills/workovercv`, which is the Codex repo-skill discovery location.
-They do not install Python dependencies or alter the WorkOverCV runtime.
+They also create or update the default personal marketplace file:
+
+```text
+~/.agents/plugins/marketplace.json
+```
+
+Then install from the personal marketplace:
+
+```powershell
+codex plugin add workovercv@personal
+```
+
+Start a new Codex thread after installing so Codex picks up the plugin-provided
+skill.
+
+## Runtime Install
+
+Install the shared WorkOverCV CLI in the active Python environment:
+
+```powershell
+python -m pip install -e C:\Development\agentic-skills\workovercv
+```
+
+Verify:
+
+```powershell
+where workovercv
+workovercv --help
+```
 
 ## Required Behavior
 
@@ -116,11 +129,12 @@ The adapter must not:
 - make a hiring recommendation
 - treat stars, forks, watchers, or followers as competence metrics
 
-## Optional Plugin Package
+## Plugin Package
 
 `adapters/codex/plugin/workovercv` contains a local Codex plugin package that
-bundles the same WorkOverCV skill. This is packaging only; the canonical
-workflow and runtime contract remain in the WorkOverCV repository.
+bundles the WorkOverCV skill with the workflow docs and schemas needed for
+progressive disclosure. This is packaging only; the canonical workflow and
+runtime contract remain in the WorkOverCV repository root.
 
 ## Verification
 

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorkOverCV Gap Record",
+  "type": "object",
+  "required": [
+    "gap_id",
+    "repo_id",
+    "category",
+    "description",
+    "impact_on_report",
+    "related_signal_ids",
+    "suggested_follow_up"
+  ],
+  "properties": {
+    "gap_id": { "type": "string", "minLength": 1 },
+    "repo_id": { "type": "string", "minLength": 1 },
+    "category": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 },
+    "impact_on_report": {
+      "enum": ["lowers_confidence", "requires_follow_up", "bounds_interpretation", "no_material_impact"]
+    },
+    "related_signal_ids": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "suggested_follow_up": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": false
+}

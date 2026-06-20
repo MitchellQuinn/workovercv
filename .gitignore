@@ -32,7 +32,11 @@ dist/
 .eggs/
 
 # Project-generated artifacts
-.agents/
+.agents/*
+!.agents/skills/
+.agents/skills/*
+!.agents/skills/workovercv/
+!.agents/skills/workovercv/**
 .archive/
 output/
 

@@ -1,7 +1,7 @@
 {
   "name": "workovercv",
-  "version": "0.2.0",
-  "description": "Run WorkOverCV repository employment-signal assessments from Codex using the shared CLI and canonical workflow contract.",
+  "version": "0.2.1",
+  "description": "Run WorkOverCV repository employment-signal assessments from Codex using the shared CLI and bundled workflow references.",
   "author": {
     "name": "WorkOverCV"
   },
@@ -17,7 +17,7 @@
   "interface": {
     "displayName": "WorkOverCV",
     "shortDescription": "Assess public repositories with evidence-bounded employment signals.",
-    "longDescription": "Adds a Codex skill that runs WorkOverCV discovery, collection, agent-authored ledgers, report rendering, and strict validation without redefining the workflow.",
+    "longDescription": "Adds a Codex skill that runs WorkOverCV discovery, collection, agent-authored ledgers, report rendering, and strict validation using bundled workflow references without redefining the workflow.",
     "developerName": "WorkOverCV",
     "category": "Productivity",
     "capabilities": [

@@ -8,8 +8,8 @@ without redefining the workflow.
 
 - WorkOverCV is installed or available in the active Python environment.
 - The repository is opened at the WorkOverCV root.
-- The Codex adapter skill has been installed or is available from
-  `skills/workovercv/SKILL.md`.
+- The Codex adapter plugin has been installed from the personal marketplace, or
+  the plugin package is available from `adapters/codex/plugin/workovercv`.
 
 ## Smoke Prompt
 
@@ -45,6 +45,7 @@ Record the output directory and confirm these files exist:
 - `screening_brief.md`
 - `report.json`
 - `repo_inventory.json`
+- `review_scope.yml`
 - `artifact_inventory.json`
 - `review_corpus.jsonl`
 - `work_chronology.json`

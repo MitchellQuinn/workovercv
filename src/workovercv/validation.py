@@ -5,6 +5,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+import yaml
 from jsonschema import Draft202012Validator
 
 from .constants import (
@@ -20,6 +21,7 @@ from .constants import (
     SUMMARY_REPORT_HEADINGS,
 )
 from .io import read_json, read_jsonl
+from .manifest import ManifestError, validate_review_scope
 from .run_manifest import update_run_manifest
 
 
@@ -68,6 +70,8 @@ def validate_run(run_dir: Path, *, update_manifest: bool = True) -> ValidationRe
     _check_required_files(run_dir, result)
     if result.errors:
         return result
+
+    _validate_review_scope_file(run_dir / "review_scope.yml", result)
 
     try:
         repo_inventory = read_json(run_dir / "repo_inventory.json")
@@ -178,6 +182,29 @@ def _check_required_files(run_dir: Path, result: ValidationResult) -> None:
 
 def _schema_dir() -> Path:
     return Path(__file__).resolve().parents[2] / "schemas"
+
+
+def _validate_review_scope_file(path: Path, result: ValidationResult) -> None:
+    try:
+        scope = yaml.safe_load(path.read_text(encoding="utf-8"))
+    except yaml.YAMLError as exc:
+        result.errors.append(f"review_scope.yml: invalid YAML: {exc}")
+        return
+    except OSError as exc:
+        result.errors.append(f"review_scope.yml: cannot read review scope: {exc}")
+        return
+
+    error_count = len(result.errors)
+    _validate_schema(scope, "review_scope.schema.json", "review_scope.yml", result)
+    if len(result.errors) != error_count:
+        return
+    if not isinstance(scope, dict):
+        return
+
+    try:
+        validate_review_scope(scope)
+    except ManifestError as exc:
+        result.errors.append(f"review_scope.yml: manifest violation: {exc}")
 
 
 def _validate_artifact_schemas(

@@ -48,6 +48,7 @@ Current v0.6 required outputs to verify on the next smoke run:
 - `screening_brief.md`
 - `report.json`
 - `repo_inventory.json`
+- `review_scope.yml`
 - `artifact_inventory.json`
 - `review_corpus.jsonl`
 - `work_chronology.json`

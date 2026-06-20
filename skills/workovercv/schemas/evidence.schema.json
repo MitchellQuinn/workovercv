@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorkOverCV Evidence Record",
+  "type": "object",
+  "required": [
+    "evidence_id",
+    "repo_id",
+    "artifact_id",
+    "path",
+    "locator",
+    "evidence_type",
+    "excerpt_or_summary",
+    "supports",
+    "evidence_strength"
+  ],
+  "properties": {
+    "evidence_id": { "type": "string", "minLength": 1 },
+    "repo_id": { "type": "string", "minLength": 1 },
+    "artifact_id": { "type": "string", "minLength": 1 },
+    "path": { "type": "string", "minLength": 1 },
+    "locator": {
+      "type": "object",
+      "required": ["type", "value"],
+      "properties": {
+        "type": { "enum": ["line_range", "section", "commit", "file", "test_name", "inventory"] },
+        "value": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "evidence_type": { "enum": ["direct", "indirect", "absence", "contradiction"] },
+    "excerpt_or_summary": { "type": "string", "minLength": 1 },
+    "supports": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "evidence_strength": { "enum": ["weak", "moderate", "strong"] },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

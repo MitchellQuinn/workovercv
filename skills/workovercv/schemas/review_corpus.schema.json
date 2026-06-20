@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorkOverCV Review Corpus Record",
+  "type": "object",
+  "required": [
+    "chunk_id",
+    "repo_id",
+    "artifact_id",
+    "path",
+    "artifact_type",
+    "locator",
+    "line_start",
+    "line_end",
+    "sha256",
+    "text"
+  ],
+  "properties": {
+    "chunk_id": { "type": "string", "minLength": 1 },
+    "repo_id": { "type": "string", "minLength": 1 },
+    "artifact_id": { "type": "string", "minLength": 1 },
+    "path": { "type": "string", "minLength": 1 },
+    "artifact_type": {
+      "enum": [
+        "CI_workflow",
+        "README",
+        "model_card",
+        "failure_analysis",
+        "architecture_document",
+        "test_file",
+        "training_script",
+        "inference_script",
+        "evaluation_script",
+        "run_manifest",
+        "data_manifest",
+        "configuration_file",
+        "inventory_summary",
+        "notebook_source",
+        "source_code",
+        "technical_writeup"
+      ]
+    },
+    "locator": {
+      "type": "object",
+      "required": ["type", "value"],
+      "properties": {
+        "type": { "enum": ["line_range", "section", "commit", "file", "test_name", "inventory"] },
+        "value": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "line_start": { "type": "integer", "minimum": 1 },
+    "line_end": { "type": "integer", "minimum": 1 },
+    "sha256": { "type": "string", "minLength": 1 },
+    "text": { "type": "string" }
+  },
+  "additionalProperties": false
+}

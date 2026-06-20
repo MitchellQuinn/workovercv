@@ -1,0 +1,286 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorkOverCV Work Behaviour Profile Report",
+  "type": "object",
+  "required": [
+    "title",
+    "analysis_model_information",
+    "scope_and_evidence_base",
+    "executive_work_profile",
+    "observed_work_behaviour_signals",
+    "engineering_habits",
+    "problem_solving_style",
+    "work_rhythm_and_development_cadence",
+    "environment_fit",
+    "role_family_fit",
+    "evidence_gaps_and_follow_up_questions",
+    "confidence_and_uncertainty_notes"
+  ],
+  "properties": {
+    "title": { "const": "Work Behaviour Profile Report" },
+    "analysis_model_information": { "type": "string", "minLength": 1 },
+    "scope_and_evidence_base": {
+      "type": "object",
+      "required": [
+        "candidate_url",
+        "repository_count",
+        "artifact_count",
+        "repository_names",
+        "evidence_note",
+        "non_decision_note",
+        "private_work_note"
+      ],
+      "properties": {
+        "candidate_url": { "type": "string", "minLength": 1 },
+        "repository_count": { "type": "integer", "minimum": 0 },
+        "artifact_count": { "type": "integer", "minimum": 0 },
+        "repository_names": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "evidence_note": { "type": "string", "minLength": 1 },
+        "non_decision_note": { "type": "string", "minLength": 1 },
+        "private_work_note": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "executive_work_profile": { "type": "string", "minLength": 1 },
+    "observed_work_behaviour_signals": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "signal_id",
+          "category",
+          "label",
+          "evidence_summary",
+          "implication",
+          "confidence",
+          "caveats",
+          "evidence_ids"
+        ],
+        "properties": {
+          "signal_id": { "type": "string", "minLength": 1 },
+          "category": { "type": "string", "minLength": 1 },
+          "label": { "type": "string", "minLength": 1 },
+          "evidence_summary": { "type": "string", "minLength": 1 },
+          "implication": { "type": "string", "minLength": 1 },
+          "confidence": { "enum": ["low", "medium", "high"] },
+          "caveats": { "type": "string", "minLength": 1 },
+          "evidence_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "engineering_habits": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/synthesized_habit" }
+    },
+    "problem_solving_style": {
+      "type": "object",
+      "required": [
+        "summary",
+        "supporting_signal_ids",
+        "evidence_ids",
+        "confidence",
+        "caveats"
+      ],
+      "properties": {
+        "summary": { "type": "string", "minLength": 1 },
+        "supporting_signal_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "evidence_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "confidence": { "enum": ["low", "medium", "high"] },
+        "caveats": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "work_rhythm_and_development_cadence": {
+      "type": "object",
+      "required": [
+        "summary",
+        "commit_history_signal",
+        "artifact_chronology_signal",
+        "public_history_limitations",
+        "confidence",
+        "caveats"
+      ],
+      "properties": {
+        "summary": { "type": "string", "minLength": 1 },
+        "commit_history_signal": { "$ref": "#/$defs/cadence_signal" },
+        "artifact_chronology_signal": { "$ref": "#/$defs/cadence_signal" },
+        "public_history_limitations": { "type": "string", "minLength": 1 },
+        "confidence": { "enum": ["low", "medium", "high"] },
+        "caveats": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "environment_fit": {
+      "type": "object",
+      "required": ["may_fit_well", "may_require_care"],
+      "properties": {
+        "may_fit_well": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "may_require_care": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      },
+      "additionalProperties": false
+    },
+    "role_family_fit": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "role_family",
+          "why_discuss",
+          "behaviour_fit",
+          "likely_contribution",
+          "interview_probes",
+          "confidence",
+          "caveats",
+          "supporting_signal_ids",
+          "limiting_gap_ids"
+        ],
+        "properties": {
+          "role_family": { "type": "string", "minLength": 1 },
+          "why_discuss": { "type": "string", "minLength": 1 },
+          "behaviour_fit": { "type": "string", "minLength": 1 },
+          "likely_contribution": { "type": "string", "minLength": 1 },
+          "interview_probes": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "confidence": { "enum": ["low", "medium", "high"] },
+          "caveats": { "type": "string", "minLength": 1 },
+          "supporting_signal_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "limiting_gap_ids": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "evidence_gaps_and_follow_up_questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "gap_id",
+          "label",
+          "what_was_observed",
+          "why_uncertain",
+          "suggested_follow_up",
+          "confidence",
+          "scope"
+        ],
+        "properties": {
+          "gap_id": { "type": "string", "minLength": 1 },
+          "label": { "type": "string", "minLength": 1 },
+          "what_was_observed": { "type": "string", "minLength": 1 },
+          "why_uncertain": { "type": "string", "minLength": 1 },
+          "suggested_follow_up": { "type": "string", "minLength": 1 },
+          "confidence": { "enum": ["low", "medium", "high"] },
+          "scope": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "confidence_and_uncertainty_notes": {
+      "type": "object",
+      "required": [
+        "evidence_density",
+        "cross_repository_consistency",
+        "authorship_bounds",
+        "public_repository_limitations",
+        "private_work_limitations",
+        "confidence_summary"
+      ],
+      "properties": {
+        "evidence_density": { "type": "string", "minLength": 1 },
+        "cross_repository_consistency": { "type": "string", "minLength": 1 },
+        "authorship_bounds": { "type": "string", "minLength": 1 },
+        "public_repository_limitations": { "type": "string", "minLength": 1 },
+        "private_work_limitations": { "type": "string", "minLength": 1 },
+        "confidence_summary": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "synthesized_habit": {
+      "type": "object",
+      "required": [
+        "habit_id",
+        "label",
+        "description",
+        "supporting_signal_ids",
+        "evidence_ids",
+        "confidence",
+        "caveats"
+      ],
+      "properties": {
+        "habit_id": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "supporting_signal_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "evidence_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "confidence": { "enum": ["low", "medium", "high"] },
+        "caveats": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "cadence_signal": {
+      "type": "object",
+      "required": [
+        "description",
+        "evidence_ids",
+        "confidence",
+        "caveats"
+      ],
+      "properties": {
+        "description": { "type": "string", "minLength": 1 },
+        "evidence_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "confidence": { "enum": ["low", "medium", "high"] },
+        "caveats": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

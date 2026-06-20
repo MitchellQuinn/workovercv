@@ -449,6 +449,55 @@ def test_validate_run_rejects_missing_boundary_artifact(tmp_path: Path, artifact
     assert f"Missing required artifact: {artifact_name}" in result.errors
 
 
+def test_validate_run_rejects_malformed_review_scope(tmp_path: Path) -> None:
+    _write_complete_run(tmp_path)
+    render_report(tmp_path)
+    (tmp_path / "review_scope.yml").write_text("candidate: [\n", encoding="utf-8")
+
+    result = validate_run(tmp_path, update_manifest=False)
+
+    assert any("review_scope.yml" in error and "invalid YAML" in error for error in result.errors)
+
+
+def test_validate_run_rejects_schema_invalid_review_scope(tmp_path: Path) -> None:
+    _write_complete_run(tmp_path)
+    render_report(tmp_path)
+    write_review_scope(
+        tmp_path / "review_scope.yml",
+        {
+            "candidate": "not-a-mapping",
+            "repositories": "not-a-list",
+        },
+    )
+
+    result = validate_run(tmp_path, update_manifest=False)
+
+    assert any("review_scope.yml" in error and "schema violation" in error for error in result.errors)
+
+
+def test_validate_run_rejects_manifest_invalid_review_scope(tmp_path: Path) -> None:
+    _write_complete_run(tmp_path)
+    render_report(tmp_path)
+    write_review_scope(
+        tmp_path / "review_scope.yml",
+        {
+            "candidate": {"type": "github_profile", "url": "https://github.com/example", "username": "example"},
+            "repositories": [
+                {
+                    "repo_id": "example-small",
+                    "name": "small",
+                    "url": "https://github.com/example/small",
+                    "selected_for_review": True,
+                }
+            ],
+        },
+    )
+
+    result = validate_run(tmp_path, update_manifest=False)
+
+    assert any("review_scope.yml" in error and "requires clone_url or local_path" in error for error in result.errors)
+
+
 def test_validate_run_rejects_missing_screening_brief(tmp_path: Path) -> None:
     _write_complete_run(tmp_path)
     render_report(tmp_path)
