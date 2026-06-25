@@ -1,0 +1,519 @@
+{
+  "analysis_model_information": "Deterministic WorkOverCV rubric analysis; no LLM model used.",
+  "confidence_and_uncertainty_notes": {
+    "authorship_bounds": "Authorship interpretation is bounded to collected public repository evidence and should be verified through discussion when it materially affects interpretation.",
+    "confidence_summary": "Signal confidence distribution: high=6, medium=2, low=0; evidence gaps recorded: 3.",
+    "cross_repository_consistency": "Signals are drawn from 5 repository record(s); cross-repository confidence depends on how many repositories contain matching artifact types.",
+    "evidence_density": "894 artifact(s) and 8 behaviour signal(s) were selected for analysis.",
+    "private_work_limitations": "Private and company work may be absent from the corpus and should be treated as unknown.",
+    "public_repository_limitations": "GitHub evidence is a sample of public work, not a complete employment history."
+  },
+  "engineering_habits": [
+    {
+      "caveats": "Public documentation does not directly prove workplace team handoff behavior. Repository artifacts show documented boundaries but do not prove how these decisions were negotiated in a team.",
+      "confidence": "high",
+      "description": "Documentation and design-boundary evidence point to a habit of moving context out of private assumptions and into artifacts that reviewers can inspect.",
+      "evidence_ids": [
+        "ev-001-documentation-reviewer-context-01",
+        "ev-001-documentation-reviewer-context-02",
+        "ev-001-documentation-reviewer-context-03",
+        "ev-001-documentation-reviewer-context-04",
+        "ev-001-documentation-reviewer-context-05",
+        "ev-002-architecture-explicit-boundaries-01",
+        "ev-002-architecture-explicit-boundaries-02",
+        "ev-002-architecture-explicit-boundaries-03",
+        "ev-002-architecture-explicit-boundaries-04",
+        "ev-002-architecture-explicit-boundaries-05"
+      ],
+      "habit_id": "externalising_context_and_boundaries",
+      "label": "Externalising context and boundaries",
+      "supporting_signal_ids": [
+        "sig-001-documentation-reviewer-context",
+        "sig-002-architecture-explicit-boundaries"
+      ]
+    },
+    {
+      "caveats": "Static source inspection does not prove production runtime reliability or operational ownership.",
+      "confidence": "high",
+      "description": "Implementation evidence shows ideas being converted into code surfaces that can be inspected, run, or traced by another technical reader.",
+      "evidence_ids": [
+        "ev-003-implementation-inspectable-runtime-01",
+        "ev-003-implementation-inspectable-runtime-02",
+        "ev-003-implementation-inspectable-runtime-03",
+        "ev-003-implementation-inspectable-runtime-04",
+        "ev-003-implementation-inspectable-runtime-05"
+      ],
+      "habit_id": "building_inspectable_runnable_artifacts",
+      "label": "Building inspectable runnable artifacts",
+      "supporting_signal_ids": [
+        "sig-003-implementation-inspectable-runtime"
+      ]
+    },
+    {
+      "caveats": "Repository tests show public validation behavior, not the full reliability practices used in private or deployed systems. Metric artifacts need domain review before being treated as proof of model or system quality.",
+      "confidence": "medium",
+      "description": "Validation and measurement evidence shows technical claims being surrounded by checks, benchmark context, manifests, or reproducibility records.",
+      "evidence_ids": [
+        "ev-004-testing-validation-gates-01",
+        "ev-004-testing-validation-gates-02",
+        "ev-004-testing-validation-gates-03",
+        "ev-004-testing-validation-gates-04",
+        "ev-004-testing-validation-gates-05",
+        "ev-005-evaluation-measurement-artifacts-01",
+        "ev-005-evaluation-measurement-artifacts-02",
+        "ev-005-evaluation-measurement-artifacts-03",
+        "ev-005-evaluation-measurement-artifacts-04",
+        "ev-005-evaluation-measurement-artifacts-05"
+      ],
+      "habit_id": "validating_claims_through_records",
+      "label": "Validating claims through tests, manifests, metrics, or run records",
+      "supporting_signal_ids": [
+        "sig-004-testing-validation-gates",
+        "sig-005-evaluation-measurement-artifacts"
+      ]
+    },
+    {
+      "caveats": "Repository artifacts show documented boundaries but do not prove how these decisions were negotiated in a team. Repository tests show public validation behavior, not the full reliability practices used in private or deployed systems.",
+      "confidence": "medium",
+      "description": "Project structure, configuration, boundaries, and checks create surfaces for later modification and focused technical review.",
+      "evidence_ids": [
+        "ev-002-architecture-explicit-boundaries-01",
+        "ev-002-architecture-explicit-boundaries-02",
+        "ev-002-architecture-explicit-boundaries-03",
+        "ev-002-architecture-explicit-boundaries-04",
+        "ev-002-architecture-explicit-boundaries-05",
+        "ev-004-testing-validation-gates-01",
+        "ev-004-testing-validation-gates-02",
+        "ev-004-testing-validation-gates-03",
+        "ev-004-testing-validation-gates-04",
+        "ev-004-testing-validation-gates-05",
+        "ev-006-maintainability-project-structure-01",
+        "ev-006-maintainability-project-structure-02",
+        "ev-006-maintainability-project-structure-03",
+        "ev-006-maintainability-project-structure-04",
+        "ev-006-maintainability-project-structure-05"
+      ],
+      "habit_id": "structuring_for_modification_and_review",
+      "label": "Structuring work for modification and review",
+      "supporting_signal_ids": [
+        "sig-002-architecture-explicit-boundaries",
+        "sig-004-testing-validation-gates",
+        "sig-006-maintainability-project-structure"
+      ]
+    },
+    {
+      "caveats": "Public documentation does not directly prove workplace team handoff behavior. Public packaging does not by itself prove user adoption or product-market fit.",
+      "confidence": "high",
+      "description": "Packaging and documentation evidence frames the work for readers who need setup context, usage paths, and points to interrogate.",
+      "evidence_ids": [
+        "ev-001-documentation-reviewer-context-01",
+        "ev-001-documentation-reviewer-context-02",
+        "ev-001-documentation-reviewer-context-03",
+        "ev-001-documentation-reviewer-context-04",
+        "ev-001-documentation-reviewer-context-05",
+        "ev-008-product-reviewer-positioning-01",
+        "ev-008-product-reviewer-positioning-02",
+        "ev-008-product-reviewer-positioning-03",
+        "ev-008-product-reviewer-positioning-04",
+        "ev-008-product-reviewer-positioning-05"
+      ],
+      "habit_id": "packaging_for_technical_readers",
+      "label": "Packaging work for technical readers",
+      "supporting_signal_ids": [
+        "sig-001-documentation-reviewer-context",
+        "sig-008-product-reviewer-positioning"
+      ]
+    }
+  ],
+  "environment_fit": {
+    "may_fit_well": [
+      "Applied ML, evaluation-heavy, or measurement-oriented teams.",
+      "Research-adjacent engineering or ambiguous technical problem spaces.",
+      "Tool-building contexts that value documentation, boundaries, and inspectability.",
+      "Engineering contexts where runnable artifacts and concrete implementation are important."
+    ],
+    "may_require_care": [
+      "Roles where private/company work, live collaboration, or production operation history is essential should probe beyond public repositories.",
+      "Recorded evidence gaps should be handled as interview prompts, not adverse conclusions."
+    ]
+  },
+  "evidence_gaps_and_follow_up_questions": [
+    {
+      "confidence": "medium",
+      "gap_id": "gap-001-collaboration_visibility_gap",
+      "label": "Collaboration Visibility Gap",
+      "scope": "collected public repository evidence",
+      "suggested_follow_up": "Ask for an example of reviewed team work, handoff notes, or pull request discussion.",
+      "what_was_observed": "Public repository evidence can show documentation and packaging, but it does not directly show team review, pull-request discussion, or workplace collaboration.",
+      "why_uncertain": "The repository corpus is a public evidence sample and does not expose every work context."
+    },
+    {
+      "confidence": "medium",
+      "gap_id": "gap-002-private_and_company_work_visibility_gap",
+      "label": "Private And Company Work Visibility Gap",
+      "scope": "collected public repository evidence",
+      "suggested_follow_up": "Ask which private or workplace projects best represent the same working behaviours.",
+      "what_was_observed": "The reviewed corpus is public repository evidence and may omit private, company, or collaborative work that would materially change interpretation.",
+      "why_uncertain": "The repository corpus is a public evidence sample and does not expose every work context."
+    },
+    {
+      "confidence": "low",
+      "gap_id": "gap-003-development_cadence_visibility_gap",
+      "label": "Development Cadence Visibility Gap",
+      "scope": "collected public repository evidence",
+      "suggested_follow_up": "Ask the person to walk through a representative project timeline and explain major iteration points.",
+      "what_was_observed": "Readable git chronology was unavailable or shallow, so public commit cadence cannot support a confident work-rhythm interpretation.",
+      "why_uncertain": "The repository corpus is a public evidence sample and does not expose every work context."
+    }
+  ],
+  "executive_work_profile": "Across 894 collected artifact(s) from 5 repository record(s), the reviewed work suggests an engineer who tends to make technical work inspectable: project purpose, boundaries, reviewer context, and packaging are repeatedly externalised into durable artifacts. The strongest pattern is systems-oriented work made reviewable through runnable code surfaces, tests, metrics, manifests, or evaluation records, project structure that supports later modification, and experiment, model, notebook, or failure-analysis traces. Confidence is strongest for documentation and handoff habits, system-boundary habits, implementation habits, and validation habits. Public evidence remains weaker for live collaboration, operational pressure, and private or company work unless those traces are present in the collected corpus. Evidence gaps are explicit: 3 follow-up area(s) bound interpretation rather than serving as adverse conclusions.",
+  "observed_work_behaviour_signals": [
+    {
+      "category": "documentation_and_handoff",
+      "caveats": "Public documentation does not directly prove workplace team handoff behavior.",
+      "confidence": "high",
+      "evidence_ids": [
+        "ev-001-documentation-reviewer-context-01",
+        "ev-001-documentation-reviewer-context-02",
+        "ev-001-documentation-reviewer-context-03",
+        "ev-001-documentation-reviewer-context-04",
+        "ev-001-documentation-reviewer-context-05"
+      ],
+      "evidence_summary": "Reviewer-facing documentation explains purpose, usage, boundaries, or operating assumptions. The evidence bundle contains 5 artifacts across 3 repositories, including readme, technical writeup, and architecture document; reviewers can quickly understand purpose, setup, and stated limits.",
+      "implication": "This suggests a working style that values external legibility, explicit context, and reviewer handoff.",
+      "label": "Makes technical work inspectable for reviewers",
+      "signal_id": "sig-001-documentation-reviewer-context"
+    },
+    {
+      "category": "system_design",
+      "caveats": "Repository artifacts show documented boundaries but do not prove how these decisions were negotiated in a team.",
+      "confidence": "high",
+      "evidence_ids": [
+        "ev-002-architecture-explicit-boundaries-01",
+        "ev-002-architecture-explicit-boundaries-02",
+        "ev-002-architecture-explicit-boundaries-03",
+        "ev-002-architecture-explicit-boundaries-04",
+        "ev-002-architecture-explicit-boundaries-05"
+      ],
+      "evidence_summary": "Architecture, contract, and configuration artifacts expose design intent, workflow boundaries, or runtime interfaces. The evidence bundle contains 5 artifacts across 4 repositories, including architecture document, technical writeup, and configuration file; technical reviewers can probe design tradeoffs and ownership boundaries.",
+      "implication": "This suggests a tendency to make system shape and operating constraints explicit before or during implementation.",
+      "label": "Externalises system boundaries and contracts",
+      "signal_id": "sig-002-architecture-explicit-boundaries"
+    },
+    {
+      "category": "implementation_execution",
+      "caveats": "Static source inspection does not prove production runtime reliability or operational ownership.",
+      "confidence": "high",
+      "evidence_ids": [
+        "ev-003-implementation-inspectable-runtime-01",
+        "ev-003-implementation-inspectable-runtime-02",
+        "ev-003-implementation-inspectable-runtime-03",
+        "ev-003-implementation-inspectable-runtime-04",
+        "ev-003-implementation-inspectable-runtime-05"
+      ],
+      "evidence_summary": "Implementation artifacts expose concrete runtime behavior rather than only project descriptions. The evidence bundle contains 5 artifacts across 4 repositories, including source code, inference script, training script, and evaluation script; technical reviewers can inspect how ideas are translated into runnable code.",
+      "implication": "This suggests a working style oriented toward executable artifacts that reviewers can inspect and run.",
+      "label": "Translates ideas into runnable, inspectable systems",
+      "signal_id": "sig-003-implementation-inspectable-runtime"
+    },
+    {
+      "category": "validation_and_reliability",
+      "caveats": "Repository tests show public validation behavior, not the full reliability practices used in private or deployed systems.",
+      "confidence": "medium",
+      "evidence_ids": [
+        "ev-004-testing-validation-gates-01",
+        "ev-004-testing-validation-gates-02",
+        "ev-004-testing-validation-gates-03",
+        "ev-004-testing-validation-gates-04",
+        "ev-004-testing-validation-gates-05"
+      ],
+      "evidence_summary": "Test and CI artifacts provide direct evidence of reliability checks and validation gates. The evidence bundle contains 5 artifacts across 3 repositories, including test file; reviewers can route the conversation toward validation habits instead of relying on repository size.",
+      "implication": "This suggests a habit of surrounding implementation work with repeatable checks.",
+      "label": "Adds validation gates around technical claims and runtime behaviour",
+      "signal_id": "sig-004-testing-validation-gates"
+    },
+    {
+      "category": "measurement_and_evaluation",
+      "caveats": "Metric artifacts need domain review before being treated as proof of model or system quality.",
+      "confidence": "high",
+      "evidence_ids": [
+        "ev-005-evaluation-measurement-artifacts-01",
+        "ev-005-evaluation-measurement-artifacts-02",
+        "ev-005-evaluation-measurement-artifacts-03",
+        "ev-005-evaluation-measurement-artifacts-04",
+        "ev-005-evaluation-measurement-artifacts-05"
+      ],
+      "evidence_summary": "Evaluation, model, run, or data manifest artifacts make measurement workflow and benchmark context inspectable. The evidence bundle contains 5 artifacts across 3 repositories, including evaluation script, model card, run manifest, and data manifest; applied-ML reviewers can ask targeted questions about metric validity and evaluation design.",
+      "implication": "This suggests a tendency to support technical claims with measurement artifacts and reproducibility context.",
+      "label": "Prefers measured evidence over assertion",
+      "signal_id": "sig-005-evaluation-measurement-artifacts"
+    },
+    {
+      "category": "maintainability",
+      "caveats": "Public structure does not prove long-term maintenance in a production organization.",
+      "confidence": "high",
+      "evidence_ids": [
+        "ev-006-maintainability-project-structure-01",
+        "ev-006-maintainability-project-structure-02",
+        "ev-006-maintainability-project-structure-03",
+        "ev-006-maintainability-project-structure-04",
+        "ev-006-maintainability-project-structure-05"
+      ],
+      "evidence_summary": "Configuration, source organization, and supporting documentation expose maintainability-relevant project structure. The evidence bundle contains 5 artifacts across 3 repositories, including configuration file, source code, technical writeup, and architecture document; founders can inspect whether the work is organized for handoff and repeated modification.",
+      "implication": "This suggests attention to project shape, repeatable setup, and future modification.",
+      "label": "Structures projects for modification and handoff",
+      "signal_id": "sig-006-maintainability-project-structure"
+    },
+    {
+      "category": "experimentation_and_learning",
+      "caveats": "Notebook source and experiment traces are static evidence; WorkOverCV does not execute them or validate omitted outputs.",
+      "confidence": "medium",
+      "evidence_ids": [
+        "ev-007-research-experimentation-trace-01",
+        "ev-007-research-experimentation-trace-02",
+        "ev-007-research-experimentation-trace-03",
+        "ev-007-research-experimentation-trace-04"
+      ],
+      "evidence_summary": "Research, experiment, model-card, notebook-source, or failure-analysis artifacts expose exploratory workflow and tradeoff records. The evidence bundle contains 4 artifacts across 2 repositories, including failure analysis, model card, training script, and notebook source; research-oriented reviewers can discuss experiment design, iteration, and failure analysis.",
+      "implication": "This suggests comfort with uncertain technical spaces when there is a visible trail of experiments and tradeoffs.",
+      "label": "Explores uncertain technical spaces while preserving traceability",
+      "signal_id": "sig-007-research-experimentation-trace"
+    },
+    {
+      "category": "product_packaging",
+      "caveats": "Public packaging does not by itself prove user adoption or product-market fit.",
+      "confidence": "high",
+      "evidence_ids": [
+        "ev-008-product-reviewer-positioning-01",
+        "ev-008-product-reviewer-positioning-02",
+        "ev-008-product-reviewer-positioning-03",
+        "ev-008-product-reviewer-positioning-04",
+        "ev-008-product-reviewer-positioning-05"
+      ],
+      "evidence_summary": "Product or reviewer-positioning artifacts show how the work is packaged, explained, or made usable by others. The evidence bundle contains 5 artifacts across 4 repositories, including readme, technical writeup, and configuration file; reviewers can identify whether the work is framed for users, reviewers, or adapter consumers.",
+      "implication": "This suggests attention to audience, usage context, and public inspectability.",
+      "label": "Packages technical work so other people can understand and interrogate it",
+      "signal_id": "sig-008-product-reviewer-positioning"
+    }
+  ],
+  "problem_solving_style": {
+    "caveats": "Static repositories do not show live decision-making, WorkOverCV does not execute notebook artifacts, and public evidence cannot fully show collaboration or operational pressure.",
+    "confidence": "medium",
+    "evidence_ids": [
+      "ev-002-architecture-explicit-boundaries-01",
+      "ev-002-architecture-explicit-boundaries-02",
+      "ev-002-architecture-explicit-boundaries-03",
+      "ev-002-architecture-explicit-boundaries-04",
+      "ev-002-architecture-explicit-boundaries-05",
+      "ev-003-implementation-inspectable-runtime-01",
+      "ev-003-implementation-inspectable-runtime-02",
+      "ev-003-implementation-inspectable-runtime-03",
+      "ev-003-implementation-inspectable-runtime-04",
+      "ev-003-implementation-inspectable-runtime-05",
+      "ev-004-testing-validation-gates-01",
+      "ev-004-testing-validation-gates-02",
+      "ev-004-testing-validation-gates-03",
+      "ev-004-testing-validation-gates-04",
+      "ev-004-testing-validation-gates-05",
+      "ev-005-evaluation-measurement-artifacts-01",
+      "ev-005-evaluation-measurement-artifacts-02",
+      "ev-005-evaluation-measurement-artifacts-03",
+      "ev-005-evaluation-measurement-artifacts-04",
+      "ev-005-evaluation-measurement-artifacts-05",
+      "ev-006-maintainability-project-structure-01",
+      "ev-006-maintainability-project-structure-02",
+      "ev-006-maintainability-project-structure-03",
+      "ev-006-maintainability-project-structure-04",
+      "ev-006-maintainability-project-structure-05",
+      "ev-007-research-experimentation-trace-01",
+      "ev-007-research-experimentation-trace-02",
+      "ev-007-research-experimentation-trace-03",
+      "ev-007-research-experimentation-trace-04"
+    ],
+    "summary": "The reviewed work suggests a problem-solving style that turns uncertain technical spaces into bounded, inspectable systems. Ambiguity is narrowed through explicit boundaries, runnable implementations, checks, metrics, or reproducibility records, and experiment or failure-analysis traces. Where exploratory artifacts are present, the work leaves assumptions, failure modes, or measurement context available for review rather than relying on broad unsupported claims. This supports a research-adjacent engineering profile: exploratory, but biased toward traceability and falsifiable evidence.",
+    "supporting_signal_ids": [
+      "sig-002-architecture-explicit-boundaries",
+      "sig-003-implementation-inspectable-runtime",
+      "sig-004-testing-validation-gates",
+      "sig-005-evaluation-measurement-artifacts",
+      "sig-006-maintainability-project-structure",
+      "sig-007-research-experimentation-trace"
+    ]
+  },
+  "role_family_fit": [
+    {
+      "behaviour_fit": "The observable match is implementation that is packaged with setup context, bounded interfaces, and checks another engineer can inspect or extend. Evidence basis: runnable implementation artifacts, system-boundary artifacts, tests or validation gates, maintainability-oriented project structure, and reviewer-facing documentation.",
+      "caveats": "Interpret role-family fit with the recorded evidence gaps in view: gap-001-collaboration_visibility_gap, gap-002-private_and_company_work_visibility_gap, gap-003-development_cadence_visibility_gap.",
+      "confidence": "medium",
+      "interview_probes": [
+        "Ask for a code walkthrough that covers interfaces, error handling, validation, and maintenance tradeoffs.",
+        "Ask for a walkthrough of one artifact that demonstrates implementation execution.",
+        "Ask for a walkthrough of one artifact that demonstrates system design.",
+        "Ask for an example of reviewed team work, handoff notes, or pull request discussion.",
+        "Ask which private or workplace projects best represent the same working behaviours."
+      ],
+      "likely_contribution": "The person would likely contribute inspectable implementation work with clear setup context, bounded interfaces, and reviewable maintenance paths, subject to the recorded evidence gaps.",
+      "limiting_gap_ids": [
+        "gap-001-collaboration_visibility_gap",
+        "gap-002-private_and_company_work_visibility_gap",
+        "gap-003-development_cadence_visibility_gap"
+      ],
+      "role_family": "Software Engineer",
+      "supporting_signal_ids": [
+        "sig-003-implementation-inspectable-runtime",
+        "sig-002-architecture-explicit-boundaries",
+        "sig-004-testing-validation-gates",
+        "sig-006-maintainability-project-structure",
+        "sig-001-documentation-reviewer-context"
+      ],
+      "why_discuss": "Software-engineering fit is worth discussing when runnable code, explicit interfaces, validation checks, and project structure appear together in the public artifacts. Supporting evidence covers runnable implementation artifacts, system-boundary artifacts, tests or validation gates, maintainability-oriented project structure, and reviewer-facing documentation."
+    },
+    {
+      "behaviour_fit": "The observable match is ML-adjacent work that connects implementation to metrics, manifests, model cards, and stated limitations. Evidence basis: measurement and evaluation records, experiment or failure-analysis traces, runnable implementation artifacts, and reviewer-facing documentation.",
+      "caveats": "Interpret role-family fit with the recorded evidence gaps in view: gap-001-collaboration_visibility_gap, gap-002-private_and_company_work_visibility_gap, gap-003-development_cadence_visibility_gap.",
+      "confidence": "medium",
+      "interview_probes": [
+        "Ask how one metric, dataset, or model-card claim was chosen, validated, and revised.",
+        "Ask for a walkthrough of one artifact that demonstrates measurement and evaluation.",
+        "Ask for a walkthrough of one artifact that demonstrates experimentation and learning.",
+        "Ask for an example of reviewed team work, handoff notes, or pull request discussion.",
+        "Ask which private or workplace projects best represent the same working behaviours."
+      ],
+      "likely_contribution": "The person would likely turn model or data work into reproducible engineering artifacts with measurable claims and reviewer-visible assumptions, subject to the recorded evidence gaps.",
+      "limiting_gap_ids": [
+        "gap-001-collaboration_visibility_gap",
+        "gap-002-private_and_company_work_visibility_gap",
+        "gap-003-development_cadence_visibility_gap"
+      ],
+      "role_family": "Applied ML Engineer",
+      "supporting_signal_ids": [
+        "sig-005-evaluation-measurement-artifacts",
+        "sig-007-research-experimentation-trace",
+        "sig-003-implementation-inspectable-runtime",
+        "sig-001-documentation-reviewer-context"
+      ],
+      "why_discuss": "Applied-ML fit is worth discussing when model, data, run, or evaluation artifacts make representation choices and measurement context visible. Supporting evidence covers measurement and evaluation records, experiment or failure-analysis traces, runnable implementation artifacts, and reviewer-facing documentation."
+    },
+    {
+      "behaviour_fit": "The observable match is exploratory engineering that turns ambiguity into documented hypotheses, runnable prototypes, and evidence that can be challenged. Evidence basis: experiment or failure-analysis traces, measurement and evaluation records, system-boundary artifacts, and reviewer-facing documentation.",
+      "caveats": "Interpret role-family fit with the recorded evidence gaps in view: gap-001-collaboration_visibility_gap, gap-002-private_and_company_work_visibility_gap, gap-003-development_cadence_visibility_gap.",
+      "confidence": "medium",
+      "interview_probes": [
+        "Ask for an experiment walkthrough that covers the uncertainty, rejected paths, and evidence that changed direction.",
+        "Ask for a walkthrough of one artifact that demonstrates experimentation and learning.",
+        "Ask for a walkthrough of one artifact that demonstrates measurement and evaluation.",
+        "Ask for an example of reviewed team work, handoff notes, or pull request discussion.",
+        "Ask which private or workplace projects best represent the same working behaviours."
+      ],
+      "likely_contribution": "The person would likely move exploratory technical ideas toward runnable, traceable prototypes without losing evidence boundaries, subject to the recorded evidence gaps.",
+      "limiting_gap_ids": [
+        "gap-001-collaboration_visibility_gap",
+        "gap-002-private_and_company_work_visibility_gap",
+        "gap-003-development_cadence_visibility_gap"
+      ],
+      "role_family": "Research Engineer",
+      "supporting_signal_ids": [
+        "sig-007-research-experimentation-trace",
+        "sig-005-evaluation-measurement-artifacts",
+        "sig-002-architecture-explicit-boundaries",
+        "sig-001-documentation-reviewer-context"
+      ],
+      "why_discuss": "Research-engineering fit is worth discussing when exploratory artifacts preserve assumptions, rejected paths, experiment traces, or bounded technical claims. Supporting evidence covers experiment or failure-analysis traces, measurement and evaluation records, system-boundary artifacts, and reviewer-facing documentation."
+    },
+    {
+      "behaviour_fit": "The observable match is a claims-auditing style: evidence records, validation gates, and metric context are available for review instead of being left as assertion. Evidence basis: measurement and evaluation records, tests or validation gates, reviewer-facing documentation, and experiment or failure-analysis traces.",
+      "caveats": "Interpret role-family fit with the recorded evidence gaps in view: gap-001-collaboration_visibility_gap, gap-002-private_and_company_work_visibility_gap, gap-003-development_cadence_visibility_gap.",
+      "confidence": "medium",
+      "interview_probes": [
+        "Ask for a claims-audit walkthrough that traces an evaluation result back to source evidence and limitations.",
+        "Ask for a walkthrough of one artifact that demonstrates measurement and evaluation.",
+        "Ask for a walkthrough of one artifact that demonstrates validation and reliability.",
+        "Ask for an example of reviewed team work, handoff notes, or pull request discussion.",
+        "Ask which private or workplace projects best represent the same working behaviours."
+      ],
+      "likely_contribution": "The person would likely make evaluation work auditable by connecting claims to metrics, manifests, checks, and explicit limitations, subject to the recorded evidence gaps.",
+      "limiting_gap_ids": [
+        "gap-001-collaboration_visibility_gap",
+        "gap-002-private_and_company_work_visibility_gap",
+        "gap-003-development_cadence_visibility_gap"
+      ],
+      "role_family": "AI Evaluation Engineer",
+      "supporting_signal_ids": [
+        "sig-005-evaluation-measurement-artifacts",
+        "sig-004-testing-validation-gates",
+        "sig-001-documentation-reviewer-context",
+        "sig-007-research-experimentation-trace"
+      ],
+      "why_discuss": "AI-evaluation fit is worth discussing when claims are paired with metrics, checks, reproducibility context, or explicit evidence limits. Supporting evidence covers measurement and evaluation records, tests or validation gates, reviewer-facing documentation, and experiment or failure-analysis traces."
+    },
+    {
+      "behaviour_fit": "The observable match is tool-shaped work that exposes installation, invocation, extension points, and failure surfaces for other engineers. Evidence basis: packaging and usage context, reviewer-facing documentation, runnable implementation artifacts, tests or validation gates, and maintainability-oriented project structure.",
+      "caveats": "Interpret role-family fit with the recorded evidence gaps in view: gap-001-collaboration_visibility_gap, gap-002-private_and_company_work_visibility_gap, gap-003-development_cadence_visibility_gap.",
+      "confidence": "medium",
+      "interview_probes": [
+        "Ask for a tool-user walkthrough that covers setup friction, extension points, and failure modes.",
+        "Ask for a walkthrough of one artifact that demonstrates product packaging.",
+        "Ask for a walkthrough of one artifact that demonstrates documentation and handoff.",
+        "Ask for an example of reviewed team work, handoff notes, or pull request discussion.",
+        "Ask which private or workplace projects best represent the same working behaviours."
+      ],
+      "likely_contribution": "The person would likely package technical workflows so other engineers can install, inspect, run, and extend them with less hidden context, subject to the recorded evidence gaps.",
+      "limiting_gap_ids": [
+        "gap-001-collaboration_visibility_gap",
+        "gap-002-private_and_company_work_visibility_gap",
+        "gap-003-development_cadence_visibility_gap"
+      ],
+      "role_family": "Developer Tools Engineer",
+      "supporting_signal_ids": [
+        "sig-008-product-reviewer-positioning",
+        "sig-001-documentation-reviewer-context",
+        "sig-003-implementation-inspectable-runtime",
+        "sig-004-testing-validation-gates",
+        "sig-006-maintainability-project-structure"
+      ],
+      "why_discuss": "Developer-tools fit is worth discussing when workflows are packaged with command surfaces, adapter contracts, setup documentation, or reviewer context. Supporting evidence covers packaging and usage context, reviewer-facing documentation, runnable implementation artifacts, tests or validation gates, and maintainability-oriented project structure."
+    }
+  ],
+  "scope_and_evidence_base": {
+    "artifact_count": 894,
+    "candidate_url": "https://github.com/MitchellQuinn",
+    "evidence_note": "The report is based on 894 collected artifact(s), 45 evidence record(s), and bounded chronology inputs from public or local repositories.",
+    "non_decision_note": "This is not a hiring decision record, ranking, background check, or pass/fail assessment.",
+    "private_work_note": "Private, company, and uncollected work may not be visible in the reviewed repository evidence.",
+    "repository_count": 5,
+    "repository_names": [
+      "skilldoctor",
+      "workovercv",
+      "claimlint",
+      "bounded-monocular-perception",
+      "industrial-sound-anomaly-detection"
+    ]
+  },
+  "title": "Work Behaviour Profile Report",
+  "work_rhythm_and_development_cadence": {
+    "artifact_chronology_signal": {
+      "caveats": "Artifact chronology is inferred from inventory paths and artifact types; it does not show the full private work process.",
+      "confidence": "medium",
+      "description": "Dated or staged artifact paths such as 06_live-inference_v0.1/models/distance-orientation/260504-1100_ts-2d-cnn__run_0001/model_card.md, 06_live-inference_v0.2/models/distance-orientation/260504-1100_ts-2d-cnn__run_0001/model_card.md, and 06_live-inference_v0.2/models/distance-orientation/260515-1301_ts-2d-cnn/model_card.md provide artifact-chronology evidence independent of commit count. The visible staged-output modes are staged iteration, release or run curation, failure-analysis progression, and benchmark progression.",
+      "evidence_ids": [
+        "ev-010-artifact-chronology-signal-01",
+        "ev-011-artifact-chronology-signal-02",
+        "ev-012-artifact-chronology-signal-03",
+        "ev-013-artifact-chronology-signal-04",
+        "ev-014-artifact-chronology-signal-05"
+      ]
+    },
+    "caveats": "Raw commit hashes, commit subjects, and raw timelines remain analysis input only. Dated artifact paths can suggest staged refinement but cannot prove the full work rhythm.",
+    "commit_history_signal": {
+      "caveats": "Do not equate shallow public history, commit count, or velocity with competence or productivity.",
+      "confidence": "low",
+      "description": "Bounded chronology contains 5 readable public commit record(s) across 5 repository record(s). The public history may represent a curated snapshot rather than the whole work process, so commit cadence should be treated as low-confidence evidence.",
+      "evidence_ids": [
+        "ev-009-commit-history-signal"
+      ]
+    },
+    "confidence": "medium",
+    "public_history_limitations": "Public repositories may be curated snapshots of a larger work process. Commit counts, commit velocity, and shallow history are not treated as competence or productivity measures.",
+    "summary": "Commit-history evidence and artifact-chronology evidence are interpreted separately. Bounded chronology contains 5 readable public commit record(s) across 5 repository record(s). Dated or staged artifact paths such as 06_live-inference_v0.1/models/distance-orientation/260504-1100_ts-2d-cnn__run_0001/model_card.md, 06_live-inference_v0.2/models/distance-orientation/260504-1100_ts-2d-cnn__run_0001/model_card.md, and 06_live-inference_v0.2/models/distance-orientation/260515-1301_ts-2d-cnn/model_card.md provide artifact-chronology evidence independent of commit count. The visible staged-output modes are staged iteration, release or run curation, failure-analysis progression, and benchmark progression."
+  }
+}
