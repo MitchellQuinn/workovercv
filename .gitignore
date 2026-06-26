@@ -39,6 +39,7 @@ dist/
 !.agents/skills/workovercv/**
 .archive/
 output/
+working-ledger/
 
 # IDE/editor and OS noise
 .idea/

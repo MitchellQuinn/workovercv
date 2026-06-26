@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-06-26T16:47:13Z",
+  "keep_worktrees": false,
+  "repositories": [
+    {
+      "cleanup": true,
+      "path": "C:\\Users\\Mitch\\.workovercv\\mitchellquinn\\worktrees\\mitchellquinn-agent-working-ledger",
+      "repo_id": "mitchellquinn-agent-working-ledger",
+      "source": "git_clone"
+    },
+    {
+      "cleanup": true,
+      "path": "C:\\Users\\Mitch\\.workovercv\\mitchellquinn\\worktrees\\mitchellquinn-workovercv",
+      "repo_id": "mitchellquinn-workovercv",
+      "source": "git_clone"
+    },
+    {
+      "cleanup": true,
+      "path": "C:\\Users\\Mitch\\.workovercv\\mitchellquinn\\worktrees\\mitchellquinn-skilldoctor",
+      "repo_id": "mitchellquinn-skilldoctor",
+      "source": "git_clone"
+    },
+    {
+      "cleanup": true,
+      "path": "C:\\Users\\Mitch\\.workovercv\\mitchellquinn\\worktrees\\mitchellquinn-claimlint",
+      "repo_id": "mitchellquinn-claimlint",
+      "source": "git_clone"
+    },
+    {
+      "cleanup": true,
+      "path": "C:\\Users\\Mitch\\.workovercv\\mitchellquinn\\worktrees\\mitchellquinn-bounded-monocular-perception",
+      "repo_id": "mitchellquinn-bounded-monocular-perception",
+      "source": "git_clone"
+    }
+  ],
+  "work_root": "C:\\Users\\Mitch\\.workovercv\\mitchellquinn\\worktrees"
+}
