@@ -2,8 +2,8 @@
 
 The Python CLI is the shared deterministic runtime surface. It gathers public
 or local repository data, creates a review corpus, collects bounded chronology
-input, renders Work Behaviour Profile Markdown, and validates artifacts written
-by deterministic or agentic analysis.
+input, renders Work Behaviour Profile Markdown and PDF files, and validates
+artifacts written by deterministic or agentic analysis.
 
 The CLI does not call an LLM provider in v0.6. LLM judgement work is performed
 by an agent adapter against the canonical workflow in `workflows/workovercv.yml`.
@@ -42,7 +42,8 @@ and cell metadata are stripped. WorkOverCV must never execute notebooks.
 configured number of git commits per selected repository when readable history
 is available, or an unavailable-chronology record when it is not. Raw commit
 hashes, raw commit messages, and raw timelines must not be rendered into
-`report.json`, `report.md`, or `summary-report.md`.
+`report.json`, `report.md`, or `summary-report.md`. PDF outputs are generated
+from the validated Markdown files.
 
 ```bash
 workovercv analyze --run /path/to/run_dir
@@ -70,7 +71,9 @@ workovercv render --run /path/to/run_dir
 `render` converts v0.6 `report.json` into audit-oriented `report.md`, writes
 human-facing `summary-report.md`, and writes `screening_brief.md`, a cautious
 review guide derived from the validated report, role-family fit entries, signal
-ledger, evidence map, gaps, and gap follow-ups.
+ledger, evidence map, gaps, and gap follow-ups. It also writes `report.pdf`,
+`summary-report.pdf`, and `screening_brief.pdf` from those generated Markdown
+files.
 The report scope includes `scope_and_evidence_base.candidate_url`, populated
 from the workflow candidate URL or local scan URI.
 The rendered `report.md` and `summary-report.md` include
@@ -78,15 +81,20 @@ The rendered `report.md` and `summary-report.md` include
 `audit` mode is the default for `report.md` and renders verbose evidence tables
 for deeper inspection. The separate `summary-report.md` is always rendered with
 concise repository/path evidence references and no evidence appendix.
+PDF rendering uses Python-Markdown and WeasyPrint. Runtime environments should
+run `python -m weasyprint --info` as a preflight; Windows environments need
+native Pango/GObject libraries such as MSYS2 `mingw-w64-x86_64-pango` available
+on `PATH`.
 
 ```bash
 workovercv validate --run /path/to/run_dir
 ```
 
-`validate` checks required artifacts, structured records, cross references,
-v0.6 report shape, allowed Markdown headings, role-family limits, gap follow-ups, red-team status,
-prohibited wording, hiring-decision language, old-heading regressions, and raw
-chronology leakage into final report outputs.
+`validate` checks required artifacts, PDF presence and header validity,
+structured records, cross references, v0.6 report shape, allowed Markdown
+headings, role-family limits, gap follow-ups, red-team status, prohibited
+wording, hiring-decision language, old-heading regressions, and raw chronology
+leakage into final Markdown report outputs.
 
 ## Required Final Outputs
 
@@ -95,6 +103,9 @@ The following files must exist after a successful final run:
 - `report.md`
 - `summary-report.md`
 - `screening_brief.md`
+- `report.pdf`
+- `summary-report.pdf`
+- `screening_brief.pdf`
 - `report.json`
 - `repo_inventory.json`
 - `review_scope.yml`

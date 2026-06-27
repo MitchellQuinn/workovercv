@@ -12,6 +12,7 @@ from .constants import (
     CONFIDENCE_LEVELS,
     DISALLOWED_REPORT_PHRASES,
     OLD_REPORT_HEADINGS,
+    PDF_ARTIFACTS,
     REPORT_HEADINGS,
     PROTECTED_TRAIT_TERMS,
     REQUIRED_FINAL_ARTIFACTS,
@@ -68,6 +69,9 @@ def validate_run(run_dir: Path, *, update_manifest: bool = True) -> ValidationRe
     run_dir = run_dir.resolve()
     result = ValidationResult()
     _check_required_files(run_dir, result)
+    if result.errors:
+        return result
+    _validate_pdf_artifacts(run_dir, result)
     if result.errors:
         return result
 
@@ -178,6 +182,22 @@ def _check_required_files(run_dir: Path, result: ValidationResult) -> None:
     for artifact in REQUIRED_FINAL_ARTIFACTS:
         if not (run_dir / artifact).exists():
             result.errors.append(f"Missing required artifact: {artifact}")
+
+
+def _validate_pdf_artifacts(run_dir: Path, result: ValidationResult) -> None:
+    for artifact in PDF_ARTIFACTS:
+        path = run_dir / artifact
+        try:
+            if path.stat().st_size == 0:
+                result.errors.append(f"{artifact}: PDF artifact is empty")
+                continue
+            with path.open("rb") as handle:
+                header = handle.read(5)
+        except OSError as exc:
+            result.errors.append(f"{artifact}: cannot read PDF artifact: {exc}")
+            continue
+        if header != b"%PDF-":
+            result.errors.append(f"{artifact}: PDF artifact does not start with %PDF-")
 
 
 def _schema_dir() -> Path:

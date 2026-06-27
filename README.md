@@ -20,12 +20,18 @@ is documented in `docs/runtime_contract.md`. Agent adapters under `adapters/`
 must point to those contracts rather than redefining the workflow.
 
 The Python CLI handles deterministic data gathering, local deterministic scans,
-rendering, and strict validation:
+Markdown/PDF rendering, and strict validation:
 
 ```bash
 python -m pip install -e ".[test]"
 workovercv scan /path/to/local/repository
 ```
+
+PDF rendering uses WeasyPrint. After installing dependencies, run
+`python -m weasyprint --info` to verify native PDF libraries. On Windows, this
+requires Pango/GObject libraries such as the MSYS2
+`mingw-w64-x86_64-pango` package, with `C:\msys64\mingw64\bin` available on
+`PATH`.
 
 After installation, the console entry point is:
 
@@ -55,12 +61,14 @@ python -m workovercv scan <path>
 `scan <path>` is offline. It creates a local run, collects repository artifacts
 and bounded git chronology, generates behaviour signals and role-family
 discussion routes, renders `report.md`, `summary-report.md`, and a cautious
-`screening_brief.md` review guide, and runs validation. It does not fetch GitHub
-data and does not call an LLM.
+`screening_brief.md` review guide plus matching PDFs, and runs validation. It
+does not fetch GitHub data and does not call an LLM.
 
 `render` defaults to audit-oriented `report.md` and also writes
 `summary-report.md`, a shorter human-facing conversation guide with concise
-evidence path references and no evidence appendix.
+evidence path references and no evidence appendix. It also writes
+`report.pdf`, `summary-report.pdf`, and `screening_brief.pdf` from the generated
+Markdown files.
 
 Notebook files are read statically. WorkOverCV records `.ipynb` files as
 `notebook_source` artifacts and collects only markdown/code cell source. It
@@ -85,6 +93,9 @@ A valid final run contains:
 - `report.md`
 - `summary-report.md`
 - `screening_brief.md`
+- `report.pdf`
+- `summary-report.pdf`
+- `screening_brief.pdf`
 - `report.json`
 - `repo_inventory.json`
 - `review_scope.yml`
@@ -102,7 +113,8 @@ A valid final run contains:
 
 `work_chronology.json` is an analysis input. It may contain bounded git commit
 metadata, but raw commit hashes, raw commit messages, and raw timelines must not
-be emitted in `report.json`, `report.md`, or `summary-report.md`.
+be emitted in `report.json`, `report.md`, or `summary-report.md`. The PDF
+outputs are deterministic renderings of those validated Markdown files.
 
 ## Strict Validation
 
@@ -119,6 +131,7 @@ Validation rejects:
 - signal, claim, gap, mitigation, or role-family references that do not resolve
 - evidence gaps without a follow-up record in `mitigations.jsonl`
 - raw chronology data leaking into final report outputs
+- missing, empty, or non-PDF generated PDF artifacts
 - prohibited generated-output phrasing such as "red flag" framing
 - hiring-decision language in `report.md`, `summary-report.md`,
   `screening_brief.md`, or structured ledgers

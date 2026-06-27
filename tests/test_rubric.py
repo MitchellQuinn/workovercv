@@ -104,6 +104,8 @@ def test_deterministic_assessment_prefers_stronger_evidence_artifacts(tmp_path: 
     assert "research-adjacent engineering profile" in report["problem_solving_style"]["summary"]
     assert "ambiguous_problem_handling" not in json.dumps(report["problem_solving_style"])
     assert all(entry.get("likely_contribution") for entry in report["role_family_fit"])
+    role_names = [entry["role_family"] for entry in report["role_family_fit"]]
+    assert "AI Engineer" not in role_names
     role_text = json.dumps(report["role_family_fit"])
     assert "relevant behaviours connect" not in role_text
     if any(entry["role_family"] == "Software Engineer" for entry in report["role_family_fit"]):
@@ -131,6 +133,7 @@ def test_artifact_chronology_supports_iteration_independent_of_commit_count(tmp_
     ]
     evidence_by_id = {record["evidence_id"]: record for record in evidence}
     categories = {signal["category"] for signal in signals}
+    signal_by_id = {signal["signal_id"]: signal for signal in signals}
     cadence = report["work_rhythm_and_development_cadence"]
     artifact_evidence = [
         evidence_by_id[evidence_id]
@@ -146,6 +149,17 @@ def test_artifact_chronology_supports_iteration_independent_of_commit_count(tmp_
     assert "staged iteration" in cadence["artifact_chronology_signal"]["description"]
     assert "benchmark progression" in cadence["artifact_chronology_signal"]["description"]
     assert artifact_evidence[0]["path"] == "models/20260319/training_history.json"
+    role_names = [entry["role_family"] for entry in report["role_family_fit"]]
+    assert "AI Engineer" in role_names
+    assert role_names.index("AI Engineer") < role_names.index("Applied ML Engineer")
+    ai_engineer = next(entry for entry in report["role_family_fit"] if entry["role_family"] == "AI Engineer")
+    ai_supporting_categories = {
+        signal_by_id[signal_id]["category"]
+        for signal_id in ai_engineer["supporting_signal_ids"]
+    }
+    assert "implementation_execution" in ai_supporting_categories
+    assert ai_supporting_categories & {"measurement_and_evaluation", "experimentation_and_learning"}
+    assert "AI-adjacent systems" in ai_engineer["likely_contribution"]
     assert "weak work rhythm" not in json.dumps(report).lower()
 
 

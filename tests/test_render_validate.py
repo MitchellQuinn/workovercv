@@ -73,6 +73,9 @@ def test_render_report_outputs_full_and_summary_reports_without_legacy_sections(
     assert "## Behaviour Signals To Discuss" in screening_brief
     assert "## Evidence Gaps To Verify" in screening_brief
     assert "red flag" not in screening_brief.lower()
+    _assert_pdf_artifact(tmp_path / "report.pdf")
+    _assert_pdf_artifact(tmp_path / "summary-report.pdf")
+    _assert_pdf_artifact(tmp_path / "screening_brief.pdf")
 
 
 def test_summary_report_uses_path_references_without_full_evidence_tables(tmp_path: Path) -> None:
@@ -114,6 +117,41 @@ def test_summary_report_role_routes_use_shared_gap_note(tmp_path: Path) -> None:
     assert role_section.count("Ask for an example of reviewed team work.") == 0
 
 
+def test_summary_report_can_show_six_role_routes(tmp_path: Path) -> None:
+    role_names = [
+        "Software Engineer",
+        "AI Engineer",
+        "Applied ML Engineer",
+        "Research Engineer",
+        "AI Evaluation Engineer",
+        "Developer Tools Engineer",
+    ]
+    role_family_fit = {
+        "role_family_fit": [
+            {
+                "role_family": role_name,
+                "why_discuss": f"{role_name} is worth discussing from bounded repository evidence.",
+                "behaviour_fit": "The repository evidence supports reviewer-facing technical work.",
+                "likely_contribution": "The person would likely anchor technical discussion in inspectable public artifacts.",
+                "interview_probes": [f"Ask for a {role_name} work-sample walkthrough."],
+                "confidence": "medium",
+                "caveats": "Interpret with the recorded collaboration evidence gap.",
+                "supporting_signal_ids": ["sig-docs"],
+                "limiting_gap_ids": ["gap1"],
+            }
+            for role_name in role_names
+        ]
+    }
+    _write_complete_run(tmp_path, role_family_fit=role_family_fit)
+    render_report(tmp_path)
+
+    summary_report = (tmp_path / "summary-report.md").read_text(encoding="utf-8")
+    role_section = summary_report.split("## Role-Family Discussion Routes", 1)[1].split("## Evidence Gaps to Clarify", 1)[0]
+
+    for role_name in role_names:
+        assert f"### {role_name}" in role_section
+
+
 def test_render_report_includes_candidate_url(tmp_path: Path) -> None:
     _write_complete_run(tmp_path)
     report_path = render_report(tmp_path)
@@ -134,6 +172,9 @@ def test_validate_run_accepts_complete_run(tmp_path: Path) -> None:
     assert result.ok, result.errors
     manifest = json.loads((tmp_path / "run_manifest.json").read_text(encoding="utf-8"))
     assert manifest["status"] == "complete"
+    assert "report.pdf" in manifest["artifacts"]
+    render_entry = next(entry for entry in manifest["command_history"] if entry["command"] == "render")
+    assert render_entry["config"]["pdf_outputs"] == ["report.pdf", "summary-report.pdf", "screening_brief.pdf"]
 
 
 def test_validate_run_rejects_gap_without_follow_up_record(tmp_path: Path) -> None:
@@ -518,6 +559,27 @@ def test_validate_run_rejects_missing_summary_report(tmp_path: Path) -> None:
     assert "Missing required artifact: summary-report.md" in result.errors
 
 
+@pytest.mark.parametrize("artifact_name", ["report.pdf", "summary-report.pdf", "screening_brief.pdf"])
+def test_validate_run_rejects_missing_pdf_artifact(tmp_path: Path, artifact_name: str) -> None:
+    _write_complete_run(tmp_path)
+    render_report(tmp_path)
+    (tmp_path / artifact_name).unlink()
+
+    result = validate_run(tmp_path, update_manifest=False)
+
+    assert f"Missing required artifact: {artifact_name}" in result.errors
+
+
+def test_validate_run_rejects_invalid_pdf_artifact(tmp_path: Path) -> None:
+    _write_complete_run(tmp_path)
+    render_report(tmp_path)
+    (tmp_path / "report.pdf").write_bytes(b"not a pdf")
+
+    result = validate_run(tmp_path, update_manifest=False)
+
+    assert "report.pdf: PDF artifact does not start with %PDF-" in result.errors
+
+
 def test_renderer_refuses_legacy_report_shape(tmp_path: Path) -> None:
     _write_complete_run(tmp_path)
     report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
@@ -857,3 +919,9 @@ def _mutate_jsonl(path: Path, mutate: Callable[[list[dict[str, Any]]], None]) ->
     records = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
     mutate(records)
     path.write_text("\n".join(json.dumps(record) for record in records) + "\n", encoding="utf-8")
+
+
+def _assert_pdf_artifact(path: Path) -> None:
+    assert path.exists()
+    assert path.stat().st_size > 0
+    assert path.read_bytes().startswith(b"%PDF-")

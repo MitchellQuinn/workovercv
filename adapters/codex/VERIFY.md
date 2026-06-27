@@ -7,6 +7,9 @@ without redefining the workflow.
 ## Preconditions
 
 - WorkOverCV is installed or available in the active Python environment.
+- PDF rendering dependencies pass `python -m weasyprint --info`; on Windows,
+  this requires native Pango/GObject libraries such as MSYS2
+  `mingw-w64-x86_64-pango` available on `PATH`.
 - The repository is opened at the WorkOverCV root.
 - The Codex adapter plugin has been installed from the personal marketplace, or
   the plugin package is available from `adapters/codex/plugin/workovercv`.
@@ -43,6 +46,9 @@ Record the output directory and confirm these files exist:
 - `report.md`
 - `summary-report.md`
 - `screening_brief.md`
+- `report.pdf`
+- `summary-report.pdf`
+- `screening_brief.pdf`
 - `report.json`
 - `repo_inventory.json`
 - `review_scope.yml`

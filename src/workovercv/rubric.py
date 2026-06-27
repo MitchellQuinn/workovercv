@@ -43,6 +43,14 @@ class SignalSpec:
     max_per_repo: int = 2
 
 
+@dataclass(frozen=True)
+class RoleSpec:
+    role: str
+    categories: list[str]
+    required_any: list[str]
+    required_all: list[str] | None = None
+
+
 SIGNAL_SPECS = [
     SignalSpec(
         key="documentation-reviewer-context",
@@ -142,57 +150,70 @@ CATEGORY_REVIEW_LENS = {
 
 
 ROLE_SPECS = [
-    (
-        "Software Engineer",
-        [
+    RoleSpec(
+        role="Software Engineer",
+        categories=[
             "implementation_execution",
             "system_design",
             "validation_and_reliability",
             "maintainability",
             "documentation_and_handoff",
         ],
-        ["implementation_execution"],
+        required_any=["implementation_execution"],
     ),
-    (
-        "Applied ML Engineer",
-        [
+    RoleSpec(
+        role="AI Engineer",
+        categories=[
+            "implementation_execution",
+            "measurement_and_evaluation",
+            "validation_and_reliability",
+            "system_design",
+            "experimentation_and_learning",
+            "documentation_and_handoff",
+        ],
+        required_any=["measurement_and_evaluation", "experimentation_and_learning"],
+        required_all=["implementation_execution"],
+    ),
+    RoleSpec(
+        role="Applied ML Engineer",
+        categories=[
             "measurement_and_evaluation",
             "experimentation_and_learning",
             "implementation_execution",
             "documentation_and_handoff",
         ],
-        ["measurement_and_evaluation", "experimentation_and_learning"],
+        required_any=["measurement_and_evaluation", "experimentation_and_learning"],
     ),
-    (
-        "Research Engineer",
-        [
+    RoleSpec(
+        role="Research Engineer",
+        categories=[
             "experimentation_and_learning",
             "measurement_and_evaluation",
             "system_design",
             "documentation_and_handoff",
         ],
-        ["experimentation_and_learning"],
+        required_any=["experimentation_and_learning"],
     ),
-    (
-        "AI Evaluation Engineer",
-        [
+    RoleSpec(
+        role="AI Evaluation Engineer",
+        categories=[
             "measurement_and_evaluation",
             "validation_and_reliability",
             "documentation_and_handoff",
             "experimentation_and_learning",
         ],
-        ["measurement_and_evaluation"],
+        required_any=["measurement_and_evaluation"],
     ),
-    (
-        "Developer Tools Engineer",
-        [
+    RoleSpec(
+        role="Developer Tools Engineer",
+        categories=[
             "product_packaging",
             "documentation_and_handoff",
             "implementation_execution",
             "validation_and_reliability",
             "maintainability",
         ],
-        ["product_packaging"],
+        required_any=["product_packaging"],
     ),
 ]
 
@@ -203,6 +224,13 @@ ROLE_NARRATIVES = {
         "behaviour": "The observable match is implementation that is packaged with setup context, bounded interfaces, and checks another engineer can inspect or extend.",
         "contribution": "contribute inspectable implementation work with clear setup context, bounded interfaces, and reviewable maintenance paths",
         "probe": "Ask for a code walkthrough that covers interfaces, error handling, validation, and maintenance tradeoffs.",
+    },
+    "AI Engineer": {
+        "focus": "runnable AI-adjacent systems, evaluation context, validation gates, model or data artifacts, and bounded assumptions",
+        "why": "AI-engineering fit is worth discussing when runnable implementation appears alongside model, data, evaluation, experiment, or validation artifacts",
+        "behaviour": "The observable match is AI-adjacent engineering that connects executable systems to evaluation context, model or data assumptions, and checks reviewers can inspect.",
+        "contribution": "build inspectable AI-adjacent systems that connect implementation choices to evaluation evidence, data or model assumptions, and validation boundaries",
+        "probe": "Ask for a walkthrough of one AI-facing feature or pipeline from input assumptions through implementation, evaluation, and failure limits.",
     },
     "Applied ML Engineer": {
         "focus": "representation design, evaluation artifacts, benchmark context, model cards, and data or run manifests",
@@ -1217,27 +1245,29 @@ def _role_family_fit_from_signals(signals: list[dict[str, Any]], gaps: list[dict
     gap_ids = [gap["gap_id"] for gap in gaps]
     by_category = _signals_by_category(signals)
     role_family_fit: list[dict[str, Any]] = []
-    for role, categories, required_any in ROLE_SPECS:
+    for spec in ROLE_SPECS:
         category_signals = [
             signal
-            for category in categories
+            for category in spec.categories
             for signal in by_category.get(category, [])
         ]
         if not any(
             by_category.get(category)
-            for category in required_any
+            for category in spec.required_any
         ):
+            continue
+        if spec.required_all and not all(by_category.get(category) for category in spec.required_all):
             continue
         if not category_signals:
             continue
         supporting = category_signals[:6]
         role_family_fit.append(
             {
-                "role_family": role,
-                "why_discuss": _role_why_discuss(role, supporting),
-                "behaviour_fit": _role_behaviour_fit(role, supporting),
-                "likely_contribution": _role_likely_contribution(role),
-                "interview_probes": _role_interview_probes(role, supporting, gaps),
+                "role_family": spec.role,
+                "why_discuss": _role_why_discuss(spec.role, supporting),
+                "behaviour_fit": _role_behaviour_fit(spec.role, supporting),
+                "likely_contribution": _role_likely_contribution(spec.role),
+                "interview_probes": _role_interview_probes(spec.role, supporting, gaps),
                 "confidence": _confidence(category_signals),
                 "supporting_signal_ids": _signal_ids(category_signals[:6]),
                 "limiting_gap_ids": gap_ids,

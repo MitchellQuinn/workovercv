@@ -33,7 +33,8 @@ include `analyze` between `collect` and `render` so the structured ledgers and
 spec-shaped `report.json` are produced by the shared CLI path.
 Current reruns should use `python -m workovercv render --run <run>` so
 `report.md`, `summary-report.md`, and `screening_brief.md` are generated with
-the current defaults.
+the current defaults. Current runs also generate `report.pdf`,
+`summary-report.pdf`, and `screening_brief.pdf`.
 
 Output directory:
 
@@ -46,6 +47,9 @@ Current v0.6 required outputs to verify on the next smoke run:
 - `report.md`
 - `summary-report.md`
 - `screening_brief.md`
+- `report.pdf`
+- `summary-report.pdf`
+- `screening_brief.pdf`
 - `report.json`
 - `repo_inventory.json`
 - `review_scope.yml`

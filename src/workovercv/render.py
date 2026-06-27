@@ -4,8 +4,16 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Literal
 
-from .constants import SCREENING_BRIEF_ARTIFACT, SUMMARY_REPORT_ARTIFACT
+from .constants import (
+    PDF_ARTIFACTS,
+    REPORT_PDF_ARTIFACT,
+    SCREENING_BRIEF_ARTIFACT,
+    SCREENING_BRIEF_PDF_ARTIFACT,
+    SUMMARY_REPORT_ARTIFACT,
+    SUMMARY_REPORT_PDF_ARTIFACT,
+)
 from .io import read_json, read_jsonl
+from .pdf import write_pdf_from_markdown
 from .run_manifest import update_run_manifest
 
 ReportMode = Literal["summary", "audit"]
@@ -60,10 +68,30 @@ def render_report(run_dir: Path, *, mode: ReportMode = "audit") -> Path:
     summary_report_path.write_text(summary_report_markdown, encoding="utf-8", newline="\n")
     screening_brief_path = run_dir / SCREENING_BRIEF_ARTIFACT
     screening_brief_path.write_text(screening_brief_markdown, encoding="utf-8", newline="\n")
+    write_pdf_from_markdown(
+        markdown,
+        run_dir / REPORT_PDF_ARTIFACT,
+        title="Work Behaviour Profile Report",
+    )
+    write_pdf_from_markdown(
+        summary_report_markdown,
+        run_dir / SUMMARY_REPORT_PDF_ARTIFACT,
+        title="Work Behaviour Profile Summary",
+    )
+    write_pdf_from_markdown(
+        screening_brief_markdown,
+        run_dir / SCREENING_BRIEF_PDF_ARTIFACT,
+        title="Repository Review Guide",
+    )
     update_run_manifest(
         run_dir,
         command="render",
-        config={"run": str(run_dir), "report_mode": mode, "summary_report": SUMMARY_REPORT_ARTIFACT},
+        config={
+            "run": str(run_dir),
+            "report_mode": mode,
+            "summary_report": SUMMARY_REPORT_ARTIFACT,
+            "pdf_outputs": PDF_ARTIFACTS,
+        },
         status="partial",
     )
     return report_path
@@ -267,7 +295,7 @@ def _render_summary_environment_fit(lines: list[str], fit: Any, gaps: Any) -> No
     lines.append("")
 
 
-def _render_summary_role_family_routes(lines: list[str], entries: Any, gaps: Any, *, limit: int = 5) -> None:
+def _render_summary_role_family_routes(lines: list[str], entries: Any, gaps: Any, *, limit: int = 6) -> None:
     lines.extend(["## Role-Family Discussion Routes", ""])
     lines.append(
         "These are role-family conversation routes, not hiring recommendations. Read them with the shared evidence gaps below, especially where public repositories do not show team review, private/company work, or full ownership context."

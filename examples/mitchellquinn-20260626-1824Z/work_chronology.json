@@ -1,0 +1,81 @@
+{
+  "generated_at": "2026-06-26T18:25:26Z",
+  "max_commits_per_repository": 50,
+  "repositories": [
+    {
+      "available": true,
+      "commit_count": 1,
+      "default_branch": "main",
+      "entries": [
+        {
+          "commit_hash": "8fba9da72855ecb553f18599828d275cad93dbdc",
+          "committed_at": "2026-06-26T17:58:07+01:00",
+          "subject": "Refresh Mitchell Quinn example output"
+        }
+      ],
+      "first_commit_at": "2026-06-26T17:58:07+01:00",
+      "last_commit_at": "2026-06-26T17:58:07+01:00",
+      "repo_id": "mitchellquinn-workovercv"
+    },
+    {
+      "available": true,
+      "commit_count": 1,
+      "default_branch": "main",
+      "entries": [
+        {
+          "commit_hash": "95cb2092d79beb128201dc0bc6659423d21998df",
+          "committed_at": "2026-06-26T17:17:34+01:00",
+          "subject": "Clarify README release validation checks"
+        }
+      ],
+      "first_commit_at": "2026-06-26T17:17:34+01:00",
+      "last_commit_at": "2026-06-26T17:17:34+01:00",
+      "repo_id": "mitchellquinn-agent-working-ledger"
+    },
+    {
+      "available": true,
+      "commit_count": 1,
+      "default_branch": "main",
+      "entries": [
+        {
+          "commit_hash": "a641c813b53689822799fd7aceb43fe638375cb3",
+          "committed_at": "2026-06-24T14:16:37+01:00",
+          "subject": "Document validation setup and self-audit example"
+        }
+      ],
+      "first_commit_at": "2026-06-24T14:16:37+01:00",
+      "last_commit_at": "2026-06-24T14:16:37+01:00",
+      "repo_id": "mitchellquinn-skilldoctor"
+    },
+    {
+      "available": true,
+      "commit_count": 1,
+      "default_branch": "main",
+      "entries": [
+        {
+          "commit_hash": "16cdf514f396ee9189e0c01e97380f84ba86aead",
+          "committed_at": "2026-06-12T15:37:44+01:00",
+          "subject": "Record Codex smoke verification"
+        }
+      ],
+      "first_commit_at": "2026-06-12T15:37:44+01:00",
+      "last_commit_at": "2026-06-12T15:37:44+01:00",
+      "repo_id": "mitchellquinn-claimlint"
+    },
+    {
+      "available": true,
+      "commit_count": 1,
+      "default_branch": "main",
+      "entries": [
+        {
+          "commit_hash": "e6c0a1d37dce5a454da1cf45e33a7e78749c050e",
+          "committed_at": "2026-06-02T16:11:54+01:00",
+          "subject": "Revise live synthetic scale mismatch evidence"
+        }
+      ],
+      "first_commit_at": "2026-06-02T16:11:54+01:00",
+      "last_commit_at": "2026-06-02T16:11:54+01:00",
+      "repo_id": "mitchellquinn-bounded-monocular-perception"
+    }
+  ]
+}

@@ -5,11 +5,21 @@ WORKFLOW_VERSION = "0.6.0"
 TOOL_NAME = "workovercv"
 SUMMARY_REPORT_ARTIFACT = "summary-report.md"
 SCREENING_BRIEF_ARTIFACT = "screening_brief.md"
+REPORT_PDF_ARTIFACT = "report.pdf"
+SUMMARY_REPORT_PDF_ARTIFACT = "summary-report.pdf"
+SCREENING_BRIEF_PDF_ARTIFACT = "screening_brief.pdf"
+
+PDF_ARTIFACTS = [
+    REPORT_PDF_ARTIFACT,
+    SUMMARY_REPORT_PDF_ARTIFACT,
+    SCREENING_BRIEF_PDF_ARTIFACT,
+]
 
 REQUIRED_FINAL_ARTIFACTS = [
     "report.md",
     SUMMARY_REPORT_ARTIFACT,
     SCREENING_BRIEF_ARTIFACT,
+    *PDF_ARTIFACTS,
     "report.json",
     "repo_inventory.json",
     "review_scope.yml",

@@ -66,7 +66,8 @@ for metric validity, runtime reliability, and deployment claims.
 `work_chronology.json` is analysis input. It may contain bounded commit hashes,
 subjects, and timestamps, but raw commit hashes, raw commit messages, and raw
 timelines must not appear in `report.json`, `report.md`, or
-`summary-report.md`.
+`summary-report.md`. PDF outputs are generated from the validated Markdown
+files.
 
 ## Agentic Analysis Duties
 
@@ -81,11 +82,14 @@ Write the required structured artifacts:
 - `red_team_review.json`
 - `report.json`
 
-Then run `workovercv render` to produce the required Markdown outputs:
+Then run `workovercv render` to produce the required Markdown and PDF outputs:
 
 - `report.md`
 - `summary-report.md`
 - `screening_brief.md`
+- `report.pdf`
+- `summary-report.pdf`
+- `screening_brief.pdf`
 
 Use only the closed signal categories:
 
@@ -120,8 +124,8 @@ For each final report:
 
 ## Required Report Sections
 
-The final `report.md` is the full audit-oriented report and must render only
-the Work Behaviour Profile sections:
+The final `report.md` and derived `report.pdf` are the full audit-oriented
+report and must render only the Work Behaviour Profile sections:
 
 - `Scope and Evidence Base`
 - `How to Use This Report`
@@ -141,13 +145,13 @@ It must include the rendered `analysis_model_information` value.
 Do not emit `Strengths`, `Weaknesses`, `Opportunities`, or `Mitigations of
 Weaknesses`.
 
-The final `summary-report.md` must render as a shorter human-facing conversation
-guide titled `Work Behaviour Profile Summary`. It should include scope,
-executive synthesis, top observed work behaviour signals, problem-solving
-style, environment fit, role-family discussion routes, evidence gaps to
-clarify, and confidence notes. It must use concise repository/path evidence
-references, avoid full evidence tables, avoid an Evidence Appendix, and avoid
-old SWOT-style headings.
+The final `summary-report.md` and derived `summary-report.pdf` must render as a
+shorter human-facing conversation guide titled `Work Behaviour Profile Summary`.
+It should include scope, executive synthesis, top observed work behaviour
+signals, problem-solving style, environment fit, role-family discussion routes,
+evidence gaps to clarify, and confidence notes. It must use concise
+repository/path evidence references, avoid full evidence tables, avoid an
+Evidence Appendix, and avoid old SWOT-style headings.
 
 It must include the rendered `analysis_model_information` value.
 

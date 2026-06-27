@@ -21,6 +21,12 @@ outputs:
     path: summary-report.md
   screening_brief_markdown:
     path: screening_brief.md
+  report_pdf:
+    path: report.pdf
+  summary_report_pdf:
+    path: summary-report.pdf
+  screening_brief_pdf:
+    path: screening_brief.pdf
   report_json:
     path: report.json
     schema: schemas/report.schema.json
@@ -94,7 +100,7 @@ stages:
   - id: red_team_report
     description: Agent checks the draft for unsupported claims, overreach, protected traits, raw chronology leakage, and missing gap follow-ups.
   - id: render_outputs
-    description: Runtime renders report.md, summary-report.md, and screening_brief.md from report.json, including analysis_model_information in report.md and summary-report.md, then validates schemas, closed enums, safety wording, and evidence boundaries for all required artifacts.
+    description: Runtime renders report.md, summary-report.md, and screening_brief.md from report.json, writes matching PDF artifacts, including analysis_model_information in report.md and summary-report.md, then validates schemas, closed enums, PDF headers, safety wording, and evidence boundaries for all required artifacts.
 
 non_goals:
   - hiring decision system

@@ -67,7 +67,12 @@ Verify:
 ```powershell
 where workovercv
 workovercv --help
+python -m weasyprint --info
 ```
+
+PDF rendering uses WeasyPrint. On Windows, install native Pango/GObject
+libraries such as MSYS2 `mingw-w64-x86_64-pango` and make
+`C:\msys64\mingw64\bin` available on `PATH`.
 
 ## Required Behavior
 
@@ -116,6 +121,9 @@ When `report.json` is complete, Codex must run:
 workovercv render --run output/<run>
 workovercv validate --run output/<run>
 ```
+
+`render` writes `report.md`, `summary-report.md`, `screening_brief.md`, and the
+matching `report.pdf`, `summary-report.pdf`, and `screening_brief.pdf` files.
 
 ## Boundaries
 

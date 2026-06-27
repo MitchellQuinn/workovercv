@@ -24,7 +24,7 @@ def build_parser() -> argparse.ArgumentParser:
     scan = subparsers.add_parser("scan", help="Run an offline deterministic scan of a local repository path")
     scan.add_argument("path", help="Local repository path to scan")
     scan.add_argument("--out", default="output", help="Output root for timestamped run directories")
-    scan.add_argument("--report-mode", choices=["summary", "audit"], default="audit", help="report.md rendering mode; summary-report.md is also generated")
+    scan.add_argument("--report-mode", choices=["summary", "audit"], default="audit", help="report.md rendering mode; Markdown and PDF outputs are generated")
 
     collect = subparsers.add_parser("collect", help="Collect artifacts from repositories selected in review_scope.yml")
     collect.add_argument("--scope", required=True, help="Path to review_scope.yml")
@@ -34,9 +34,9 @@ def build_parser() -> argparse.ArgumentParser:
     analyze = subparsers.add_parser("analyze", help="Build deterministic analysis artifacts for a collected run")
     analyze.add_argument("--run", required=True, help="Run directory containing collected artifacts")
 
-    render = subparsers.add_parser("render", help="Render report.md, summary-report.md, and screening_brief.md from report.json")
+    render = subparsers.add_parser("render", help="Render Markdown and PDF reports from report.json")
     render.add_argument("--run", required=True, help="Run directory containing report.json")
-    render.add_argument("--mode", choices=["summary", "audit"], default="audit", help="report.md rendering mode; summary-report.md is also generated")
+    render.add_argument("--mode", choices=["summary", "audit"], default="audit", help="report.md rendering mode; Markdown and PDF outputs are generated")
 
     validate = subparsers.add_parser("validate", help="Validate a completed WorkOverCV run")
     validate.add_argument("--run", required=True, help="Run directory to validate")
